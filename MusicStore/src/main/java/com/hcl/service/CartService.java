@@ -1,9 +1,11 @@
 package com.hcl.service;
 
-import org.springframework.ui.ModelMap;
+import java.util.List;
+
+import com.hcl.entity.Order;
 
 public interface CartService {
 
-	ModelMap cartMethod(Long userCartId);
+	List<Order> cartMethod(Long userCartId);
 
 }

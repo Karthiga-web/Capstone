@@ -17,14 +17,23 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "cart")
-public class Cart {
+@Table(name = "orders")
+public class Order {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id", nullable = false)
+	@Column(name = "id")
 	Long id;
-	@Column(name = "userId", nullable = false)
+	@Column(name = "userId")
 	Long userId;
-	@Column(name = "productId", nullable = false)
+	@Column(name = "productId")
 	Long productId;
+	@Column(name = "productName")
+	String productName;
+	@Column(name = "unitPrice")
+	Long unitPrice;
+	@Column(name = "quantity")
+	Long quantity;
+	@Column(name = "price")
+	Long price;
+	
 }

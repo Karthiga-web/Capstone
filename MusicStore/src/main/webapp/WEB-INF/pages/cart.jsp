@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>View Tasks</title>
+<title>View Cart</title>
 <style>
 #ex_table {
 	table-layout: fixed !important;
@@ -48,8 +48,8 @@ tr:nth-child(even) {
 	<div align="center">
 		${message }
 		<form id="cartaction" action="/cartAction" method="post">
-			<input type="submit" value="Clear Cart" /><br>
-			<input type="submit" value="Check Out" />
+			<input type="submit" name="button" value="Clear Cart" /><br> <input
+				type="submit" name="button" value="Check Out" />
 			<table>
 				<tr>
 					<th>Product</th>
@@ -58,16 +58,17 @@ tr:nth-child(even) {
 					<th>Price</th>
 					<th>Action</th>
 				</tr>
-				<c:forEach var="product" items="${products}">
+				<c:forEach var="Order" items="${orders}">
 					<tr>
-						<td>${product.names}</td>
-						<td>${product.prices}</td>
-						<td>${product.quantity}</td>
-						<td>${product.price}</td>
-						<td><a href="cartAction/${product.id}">Remove</a></td>
+						<td>${Order.productName}</td>
+						<td>${Order.unitPrice}</td>
+						<td>${Order.quantity}</td>
+						<td>${Order.price}</td>
+						<td><a href="/${Order.id}">Remove</a></td>
 					</tr>
 				</c:forEach>
 			</table>
+			<input type="submit" name="button" value="Continue Shopping" />
 		</form>
 	</div>
 </body>
