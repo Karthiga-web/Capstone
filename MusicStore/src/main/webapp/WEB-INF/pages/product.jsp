@@ -59,7 +59,7 @@ tr:nth-child(even) {
 				</tr>
 				<c:forEach var="product" items="${products}">
 					<tr>
-						<td><img src="date:image/jpg;base64,${product.base64image}" width="75" height="75"/></td>
+						<td><img src="data:image/jpg;base64,${product.base64image}" width="75" height="75"/></td>
 						<td>${product.name}</td>
 						<td>${product.category}</td>
 						<td>${product.condition}</td>

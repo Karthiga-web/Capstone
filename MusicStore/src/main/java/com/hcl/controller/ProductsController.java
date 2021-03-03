@@ -34,13 +34,13 @@ public class ProductsController {
 
 	@Autowired
 	UserService userService;
-	
+
 	@Autowired
 	CartService cartService;
 
 	@Autowired
 	OrderService orderService;
-	
+
 	Logger logger = LoggerFactory.getLogger(ProductsController.class);
 
 	@GetMapping("/")
@@ -58,12 +58,12 @@ public class ProductsController {
 			List<Product> products = service.getAllProducts();
 			model.addAttribute("products", products);
 			return "product";
-		} else if(buttonValue.equals("Cart")){
+		} else if (buttonValue.equals("Cart")) {
 			Long userCartId = getUserIdMethod();
 			List<Order> order = cartService.cartMethod(userCartId);
-			model.addAttribute("orders",order);
+			model.addAttribute("orders", order);
 			return "cart";
-		}else {
+		} else {
 			return "register";
 		}
 	}
@@ -89,7 +89,7 @@ public class ProductsController {
 		}
 		return "login";
 	}
-	
+
 	@PostMapping("/register")
 	public String registerUser(@ModelAttribute("user") User user, ModelMap model) {
 		logger.info("registration page entered");
@@ -117,10 +117,10 @@ public class ProductsController {
 			return "Error";
 		}
 	}
-	
+
 	@PostMapping("/success")
 	public String success() {
-			return "login";
+		return "login";
 	}
 
 	@GetMapping("/viewdetail/{id}")
@@ -144,56 +144,4 @@ public class ProductsController {
 			return "product";
 		}
 	}
-
-//	@PostMapping("/order")
-//	public String orderNow(@ModelAttribute("product") Product product,
-//			@RequestParam(name = "button") String buttonValue, ModelMap model) {
-//		if (buttonValue.equalsIgnoreCase("Back")) {
-//			List<Product> tasks = service.getAllProducts();
-//			model.addAttribute("products", tasks);
-//			return "product";
-//		} else {
-//			Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-//			Optional<User> usercheck = null;
-//			Optional<Product> productcheck = null;
-//			if (!(authentication instanceof AnonymousAuthenticationToken)) {
-//				String currentUserName = authentication.getName();
-//				usercheck = userService.findByUserName(currentUserName);
-//				productcheck = service.findProductByName(product.getName());
-//				service.saveToCart(productcheck.get().getId(),usercheck.get().getUserId());
-//				List<Product> tasks = service.getAllProducts();
-//				model.addAttribute("products", tasks);
-//				model.addAttribute("message", "Product added to cart!");
-//				return "product";
-//			} else {
-//				return "login";
-//			}
-//		}
-//	}
-//	@GetMapping("/{id}")
-//	public String removeFromCart(@PathVariable String id, ModelMap model) {
-//		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-//		Optional<User> usercheck = null;
-//		if (!(authentication instanceof AnonymousAuthenticationToken)) {
-//			String currentUserName = authentication.getName();
-//			usercheck = userService.findByUserName(currentUserName);
-//		}
-//		logger.info("update task page entered");
-//		long orderId;
-//		orderId = Long.parseLong(id);
-//		Optional<Order> orderEntity = orderService.findOrderById(orderId);
-//		Order newProductEntity = orderEntity.get();
-//		if (orderEntity.isPresent()) {
-//			orderService.deleteOrder(newProductEntity);
-//			List<Order> orders = orderService.getAllOrders(usercheck.get().getUserId());
-//			model.addAttribute("orders", orders);
-//			model.addAttribute("message", "Order was removed!");
-//			return "cart";
-//		} else {
-//			List<Order> orders = orderService.getAllOrders(usercheck.get().getUserId());
-//			model.addAttribute("orders", orders);
-//			model.addAttribute("message", "Order cannot be removed! Error!");
-//			return "cart";
-//		}
-//	}
 }

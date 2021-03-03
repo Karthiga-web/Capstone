@@ -23,9 +23,9 @@ div {
 		<form id="submitOrder" action="/submitOrder" method="post">
 			<h5>Receipt</h5>
 			<br>
-			<p>Shipping Address:${Address}</p>
-			<%-- 		<p>Shipping Date:${date}</p> --%>
-			<p>Billing Address:${Address}</p>
+			<p>Shipping Address: ${Address}</p>
+			<p>Shipping Date: ${date}</p>
+			<p>Billing Address: ${Address}</p>
 			<table>
 				<tr>
 					<th>Product</th>

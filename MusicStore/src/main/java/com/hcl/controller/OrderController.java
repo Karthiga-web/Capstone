@@ -1,8 +1,9 @@
 package com.hcl.controller;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.util.Date;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Optional;
 
@@ -111,12 +112,22 @@ public class OrderController {
 					(usercheck.get().getApartmentNumber() + ", " + usercheck.get().getAddress() + ", " + "\n"
 							+ usercheck.get().getCity() + ", " + "\n" + usercheck.get().getState() + ", " + "\n"
 							+ usercheck.get().getCountry() + "-" + usercheck.get().getZipcode()));
-//			Date date = new Date();
-////			SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
-////			System.out.println(formatter.format(date));
-//			LocalDate currentDate  = LocalDate.parse(date.toString());
-//			model.addAttribute("date", (currentDate.getMonth() + " " + currentDate.getDayOfMonth()
-//			+ ", " + currentDate.getYear()));
+
+			LocalDate dateObj = LocalDate.now();
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+			Calendar c = Calendar.getInstance();
+			try {
+				c.setTime(sdf.parse(dateObj.toString()));
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
+			c.add(Calendar.DAY_OF_MONTH, 3);
+			String newDate = sdf.format(c.getTime());
+			LocalDate current = LocalDate.parse(newDate);
+			model.addAttribute("date",
+					(current.getMonth().toString().substring(0, 1)
+							+ current.getMonth().toString().substring(1, 3).toLowerCase() + " "
+							+ current.getDayOfMonth() + ", " + current.getYear()));
 			List<Order> orders = orderService.getAllOrders(usercheck.get().getUserId());
 			model.addAttribute("orders", orders);
 			total = getTotalMethod(orders);

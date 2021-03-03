@@ -55,21 +55,6 @@
 					<td>Zipcode</td>
 					<td><input type="text" name="zipcode" required /></td>
 				</tr>
-				<tr>
-					<td>Active:</td>
-					<td><input type="radio" id="activeYes" name="active"
-						value="true"> <label for="yes">YES</label> <br></td>
-					<td><input type="radio" id="activeNo" name="active"
-						value="false"> <label for="no">NO</label> <br></td>
-				</tr>
-				<tr>
-					<td>Role</td>
-					<td><input type="radio" id="user" name="roles" value="1"><label
-						for="user">User</label></td>
-					<td><input type="radio" id="admin" name="roles" value="2"><label
-						for="admin">Admin</label></td>
-					<td>
-				</tr>
 			</table>
 			<input type="submit" value="Register" />
 		</form>
