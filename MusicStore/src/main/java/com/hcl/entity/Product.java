@@ -1,14 +1,11 @@
 package com.hcl.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.Base64;
 
 @Data
 @NoArgsConstructor
@@ -27,6 +24,14 @@ public class Product {
 	Long price;
 	@Column(name = "productCondition", nullable = false)
 	String condition;
-	@Column(name = "productImage", nullable = false)
-	String image;
+	@Column(name = "productImage", nullable = false,  columnDefinition = "mediumblob")
+	byte[] image;
+
+	@Transient
+	String base64image;
+
+	public String getBase64image() {
+		base64image = Base64.getEncoder().encodeToString(this.image);
+		return base64image;
+	}
 }
