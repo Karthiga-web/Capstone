@@ -11,37 +11,37 @@
           crossorigin="anonymous">
 </head>
 
-<!--    <style>-->
-<!--        #ex_table {-->
-<!--            table-layout: fixed !important;-->
-<!--        }-->
-<!--        #ex_table thead tr {-->
-<!--            width: 500px !important;-->
-<!--            position: fixed !important;-->
-<!--        }-->
-<!--        #ex_table tbody tr {-->
-<!--            width: 500px !important;-->
-<!--        }-->
-<!--        #ex_table th, td {-->
-<!--            width: 100px;-->
-<!--        }-->
-<!--        table {-->
-<!--            font-family: arial, sans-serif;-->
-<!--            border-collapse: collapse;-->
-<!--            text-align: center;-->
-<!--            vertical-align: text-bottom;-->
-<!--            width: 100%;-->
-<!--        }-->
-<!--        td, th {-->
-<!--            border: 1px solid #dddddd;-->
-<!--            text-align: left;-->
-<!--            vertical-align: bottom;-->
-<!--            padding: 8px;-->
-<!--        }-->
-<!--        tr:nth-child(even) {-->
-<!--            background-color: #dddddd;-->
-<!--        }-->
-<!--    </style>-->
+<style>
+    #ex_table {
+        table-layout: fixed !important;
+    }
+    #ex_table thead tr {
+        width: 500px !important;
+        position: fixed !important;
+    }
+    #ex_table tbody tr {
+        width: 500px !important;
+    }
+    #ex_table th, td {
+        width: 100px;
+    }
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        text-align: center;
+        vertical-align: text-bottom;
+        width: 100%;
+    }
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        vertical-align: bottom;
+        padding: 8px;
+    }
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+</style>
 </head>
 <body>
 
@@ -84,54 +84,36 @@
 <br>
 <br>
 
-<div class="container-fluid" style="margin-top: 20px">
-    <div class="row">
-        <div class="col-md-6 col-md-offset-3" >
-            <div class="panel panel-primary">
-
-                <div class="panel-heading">
-                    <h1 class="panel-title">Products</h1>
-                </div>
-                <div class="panel-body">
-
-    <form id="product" action="/viewdetail" method="post">
-        <div class="table-responsive">
-        <table class="table table-hover">
-            <thead class="thead-inverse">
-            <tr>
-                <th>Image</th>
-                <th>Name</th>
-                <th>Category</th>
-                <th>Condition</th>
-                <th>Description</th>
-                <th>Price</th>
-            </tr>
-            </thead>
-            <c:forEach var="product" items="${products}">
+<div align="center">
+    <div class="panel-body">
+        <form id="product" action="/viewdetail" method="post">
+            <table>
                 <tr>
-                    <td>${product.image}</td>
-                    <td>${product.name}</td>
-                    <td>${product.category}</td>
-                    <td>${product.condition}</td>
-                    <td>${product.description}</td>
-                    <td>${product.price}</td>
-                    <td><a href="/viewdetail/{id}">Details</a></td>
-                    <td><a href="/${Product.id}">Delete</a>
-                    <td><a href="edit/${product.id}">Edit</a></td>
+                    <th>Image</th>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th>Condition</th>
+                    <th>Price</th>
                 </tr>
-            </c:forEach>
-        </table>
-        </div>
-    </form>
-</div>
+                <c:forEach var="product" items="${products}">
+                    <tr>
+                        <td>${product.image}</td>
+                        <td>${product.name}</td>
+                        <td>${product.category}</td>
+                        <td>${product.condition}</td>
+                        <td>${product.price}</td>
+                        <td><a type="button" class="btn btn-success" href="/admin-delete/${product.id}">Delete</a></td>
+                        <td><a type="button" class="btn btn-success" href="/admin-update/${product.id}">Update</a></td>
+                    </tr>
+                </c:forEach>
+            </table>
+        </form>
+    </div>
 
-<br>
+    <br>
 
-<div>
-    <a href="viewdetail/${product.id}">Add Product</a>
-</div>
-            </div>
-        </div>
+    <div>
+        <a href="viewdetail/${product.id}">Add Product</a>
     </div>
 </div>
 
