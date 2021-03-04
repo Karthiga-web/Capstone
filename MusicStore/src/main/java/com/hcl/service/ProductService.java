@@ -3,7 +3,6 @@ package com.hcl.service;
 import java.util.List;
 import java.util.Optional;
 
-import com.hcl.entity.Order;
 import com.hcl.entity.Product;
 
 public interface ProductService {
@@ -19,5 +18,7 @@ public interface ProductService {
 	void saveProduct(Product product);
 
 	void deleteById(Long idToDelete);
+
+	List<Product> getAllByQuery(String name, String category, String condition);
 
 }

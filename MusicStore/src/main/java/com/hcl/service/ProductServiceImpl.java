@@ -102,4 +102,7 @@ public class ProductServiceImpl implements ProductService {
 		this.productRepo.save(product);
 	}
 
+	public List<Product> getAllByQuery(String name, String category, String condition){
+		return productRepo.getAllByQuery(name, category, condition);
+	}
 }
