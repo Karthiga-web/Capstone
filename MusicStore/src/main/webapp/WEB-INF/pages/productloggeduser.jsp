@@ -5,8 +5,12 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-<title>View Cart</title>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
+	crossorigin="anonymous">
+<title>View Tasks</title>
 <style>
 #ex_table {
 	table-layout: fixed !important;
@@ -43,6 +47,10 @@ td, th {
 tr:nth-child(even) {
 	background-color: #dddddd;
 }
+
+.left-align-footer {
+	text-align: right;
+}
 </style>
 </head>
 <body>
@@ -76,32 +84,48 @@ tr:nth-child(even) {
 			</div>
 		</div>
 	</nav>
+	<!--Tables  -->
 	<div align="center">
-		${message }
-		<form id="cartaction" action="/cartAction" method="post">
-			<input type="submit" name="button" value="Clear Cart" /><br> <input
-				type="submit" name="button" value="Check Out" />
+		<form id="search" action="/search" method="get">
+			<input type="text" name="search" placeholder="search"> <input
+				type="submit" name="button" value="search">
+		</form>
+		<form id="product" action="/viewdetail" method="post">
 			<table>
 				<tr>
-					<th>Product</th>
-					<th>Unit price</th>
-					<th>Quantity</th>
-					<th>Price</th>
-					<th>Action</th>
+					<th>Image</th>
+					<th>Name</th>
+					<th>Category</th>
+					<th>Condition</th>
+					<th>Description</th>
+					<th>Click to Update</th>
 				</tr>
-				<c:forEach var="Order" items="${orders}">
+				<c:forEach var="product" items="${products}">
 					<tr>
-						<td>${Order.productName}</td>
-						<td>${Order.unitPrice}</td>
-						<td>${Order.quantity}</td>
-						<td>${Order.price}</td>
-						<td><a href="/cartRemove/${Order.id}">Remove</a></td>
+						<td><img src="data:image/jpg;base64,${product.base64image}"
+							width="75" height="75" /></td>
+						<td>${product.name}</td>
+						<td>${product.category}</td>
+						<td>${product.condition}</td>
+						<td>${product.price}</td>
+						<td><a href="viewdetail/${product.id}">View Detail</a></td>
 					</tr>
 				</c:forEach>
 			</table>
-			<input type="submit" name="button" value="Continue Shopping" />
 		</form>
 	</div>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+	<!-- Footer -->
+	<footer class="row">
+		<div class="col">
+			@2016 Company.Inc <a href="#">Privacy </a> &#8226 <a href="#">Terms</a>
+		</div>
+		<div class="col left-align-footer">
+			<a href="#target-top-home">Back to top</a>
+		</div>
+	</footer>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+		crossorigin="anonymous"></script>
 </body>
 </html>
