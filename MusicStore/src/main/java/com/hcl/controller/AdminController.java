@@ -1,24 +1,12 @@
 package com.hcl.controller;
 
-import com.hcl.entity.Order;
-import com.hcl.entity.Product;
-import com.hcl.entity.User;
-import com.hcl.service.OrderService;
 import com.hcl.service.ProductService;
-import com.hcl.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.AnonymousAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
+import com.hcl.entity.Product;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.web.servlet.ModelAndView;
 
-import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -26,7 +14,7 @@ public class AdminController {
 
     ProductService productService;
 
-    public AdminController(ProductService productService) {
+    public void ProductsController(ProductService productService) {
         this.productService = productService;
     }
 
@@ -50,9 +38,31 @@ public class AdminController {
     }
 
     @GetMapping("/admin-new")
-    public String newProductForm(Model model) {
-        Product product = new Product();
-        model.addAttribute("product", product);
-        return "newProduct";
+    public String newProductForm(@ModelAttribute("product") Product product, Model model) {
+        Optional<Product> productCheck = productService.findProductById(product.getId());
+        if (productCheck.isPresent()) {
+            model.addAttribute("message", "Product Already Exists!Try a different one!");
+            return "/newProduct";
+        } else {
+            String save = saveProductMethod(product);
+            if (save.equals("Saved")) {
+                model.addAttribute("message", "Product created Successfully!");
+                return "/adminProduct";
+            } else {
+                model.addAttribute("message", "Error Occured. Please Try again!");
+                return "/newProduct";
+            }
+        }
     }
+
+    public String saveProductMethod(Product product) {
+        try {
+            productService.saveProduct(product);
+            return "Saved";
+        } catch (Exception e) {
+            return "Error";
+        }
+    }
+
+
 }
