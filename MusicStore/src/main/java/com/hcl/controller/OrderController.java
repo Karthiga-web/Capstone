@@ -55,7 +55,7 @@ public class OrderController {
 			if (!(authentication instanceof AnonymousAuthenticationToken)) {
 				String currentUserName = authentication.getName();
 				usercheck = userService.findByUserName(currentUserName);
-				productcheck = service.findProductByName(product.getName());
+				productcheck = service.findProductById(product.getId());
 				service.saveToCart(productcheck.get().getId(), usercheck.get().getUserId());
 				List<Product> tasks = service.getAllProducts();
 				model.addAttribute("products", tasks);

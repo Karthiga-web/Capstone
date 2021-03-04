@@ -3,6 +3,9 @@ package com.hcl.controller;
 import java.util.List;
 import java.util.Optional;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +13,7 @@ import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -18,6 +22,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.hcl.entity.Order;
@@ -44,15 +49,26 @@ public class ProductsController {
 
 	Logger logger = LoggerFactory.getLogger(ProductsController.class);
 
+	String role;
 	@GetMapping("/")
 	String hello() {
 		logger.info("Mapping to index");
-		return "index";
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		authentication.getAuthorities().forEach(a -> {
+			role = a.getAuthority();
+		});
+		if (role.equalsIgnoreCase("ROLE_ADMIN")) {
+			return "adminHome";
+		} else if (role.equalsIgnoreCase("ROLE_USER")) {
+			return "index";
+		} else {
+			return "index";
+		}
 	}
 
 	@GetMapping("/search")
-	public String getAllByQuery (@RequestParam(name="search") String query, ModelMap model) {
-		List<Product> productList = service.getAllByQuery(query,query,query);
+	public String getAllByQuery(@RequestParam(name = "search") String query, ModelMap model) {
+		List<Product> productList = service.getAllByQuery(query, query, query);
 		model.addAttribute("products", productList);
 		return "product";
 	}
@@ -85,6 +101,16 @@ public class ProductsController {
 		return "product";
 	}
 
+	// Gets Product View
+	@GetMapping("/logout")
+	String logout(HttpServletRequest request, HttpServletResponse response) {
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		if (auth != null) {
+			new SecurityContextLogoutHandler().logout(request, response, auth);
+		}
+		return "logout";
+	}
+
 	public Long getUserIdMethod() {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		Optional<User> usercheck = null;
@@ -106,20 +132,7 @@ public class ProductsController {
 		}
 		return "login";
 	}
-	String role;
-	@PostMapping("/postLogin")
-	public String postLogin(@RequestParam(name="userName") String userName) {
-		UserDetails u = userService.loadUserByUsername(userName);
-		u.getAuthorities().forEach(a->{
-				role = a.getAuthority();
-		});
-		if(role.equalsIgnoreCase("ROLE_ADMIN")){
-			return "adminHome";
-		}else {
-			return "index";
-		}
-	}
-
+	
 	// Gets register View
 	@GetMapping("/register")
 	String getRegisterView(ModelMap model) {
@@ -167,6 +180,7 @@ public class ProductsController {
 		Optional<Product> productEntity = service.findProductById(productId);
 		Product newProductEntity = productEntity.get();
 		if (productEntity.isPresent()) {
+			model.addAttribute("id", newProductEntity.getId());
 			model.addAttribute("category", newProductEntity.getCategory());
 			model.addAttribute("condition", newProductEntity.getCondition());
 			model.addAttribute("image", newProductEntity.getBase64image());

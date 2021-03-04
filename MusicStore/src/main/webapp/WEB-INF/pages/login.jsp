@@ -42,7 +42,7 @@
 	<!--Login Form  -->
 	<div align="center">
 		${message }
-		<form id="login" action="/postLogin" method="post">
+		<form id="login" action="login" method="post">
 			<table style="with: 50%">
 				<tr>
 					<td>UserName:</td>
