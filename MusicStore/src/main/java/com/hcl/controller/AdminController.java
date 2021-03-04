@@ -13,11 +13,9 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -33,17 +31,28 @@ public class AdminController {
     }
 
 
-    @GetMapping
-    @RequestMapping("/admin-update/{id}")
+    @GetMapping("/admin-update/{id}")
     public String updateProduct(@PathVariable String id, Model model){
         model.addAttribute("product", productService.findProductById(Long.valueOf(id)));
         return "productForm";
     }
 
-    @GetMapping
-    @RequestMapping("admin-delete/{id}")
+    @GetMapping("admin-delete/{id}")
     public String deleteById(@PathVariable String id){
         productService.deleteById(Long.valueOf(id));
         return "adminProduct";
+    }
+
+    @PostMapping("/admin-save")
+    public String saveProduct(@ModelAttribute("product") Product product) {
+        productService.saveProduct(product);
+        return "adminProduct";
+    }
+
+    @GetMapping("/admin-new")
+    public String newProductForm(Model model) {
+        Product product = new Product();
+        model.addAttribute("product", product);
+        return "newProduct";
     }
 }
