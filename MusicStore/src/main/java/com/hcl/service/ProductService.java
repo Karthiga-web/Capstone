@@ -14,4 +14,6 @@ public interface ProductService {
 
 	Optional<Product> findProductByName(String name);
 
+	List<Product> getAllByQuery(String name, String category, String condition);
+
 }

@@ -95,4 +95,7 @@ public class ProductServiceImpl implements ProductService {
 		return productRepo.findProductByName(name);
 	}
 
+	public List<Product> getAllByQuery(String name, String category, String condition){
+		return productRepo.getAllByQuery(name, category, condition);
+	}
 }

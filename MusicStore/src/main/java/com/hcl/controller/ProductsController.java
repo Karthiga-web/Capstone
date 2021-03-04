@@ -49,6 +49,13 @@ public class ProductsController {
 		return "index";
 	}
 
+	@GetMapping("/search")
+	public String getAllByQuery (@RequestParam(name="search") String query, ModelMap model) {
+		List<Product> productList = service.getAllByQuery(query,query,query);
+		model.addAttribute("products", productList);
+		return "product";
+	}
+
 	@PostMapping("/decide")
 	public String find(@RequestParam(name = "button") String buttonValue, ModelMap model) {
 		logger.info("Finding user clicked which button");

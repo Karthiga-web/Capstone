@@ -78,6 +78,10 @@ tr:nth-child(even) {
 	<!--Tables  -->
 	<div align="center">
 		${message }
+        <form id="search" action="/search" method="get">
+            <input type="text" name="search" placeholder="search">
+            <input type="submit" name="button" value="search">
+        </form>
 		<form id="product" action="/viewdetail" method="post">
 			<table>
 				<tr>

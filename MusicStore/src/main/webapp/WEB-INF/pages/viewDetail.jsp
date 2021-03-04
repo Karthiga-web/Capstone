@@ -40,7 +40,7 @@
     </nav>
 	<div align="center">
 	<h5>Product Detail </h5><br>
-		<p>HEre is the detail information of the product!</p><br>
+		<p>Here is the detail information of the product!</p><br>
 		${message }
 		<form id="order" action="/order" method="post">
 			<table style="with: 50%">
