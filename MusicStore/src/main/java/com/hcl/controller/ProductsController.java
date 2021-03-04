@@ -155,7 +155,7 @@ public class ProductsController {
 		if (productEntity.isPresent()) {
 			model.addAttribute("category", newProductEntity.getCategory());
 			model.addAttribute("condition", newProductEntity.getCondition());
-			model.addAttribute("image", newProductEntity.getImage());
+			model.addAttribute("image", newProductEntity.getBase64image());
 			model.addAttribute("name", newProductEntity.getName());
 			model.addAttribute("price", newProductEntity.getPrice());
 			return "viewDetail";

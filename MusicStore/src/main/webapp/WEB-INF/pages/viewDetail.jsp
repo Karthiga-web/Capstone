@@ -62,7 +62,8 @@
 					<td><input id="price"  name="price" readonly value=${ price}></td>
 				<tr>
 					<td>Image</td>
-					<td><input type="text" readonly name="image" value=${ image}></td>
+					<td><img src="data:image/jpg;base64,${image}" width="100" height="100"/></td>
+					<td><input type="file" accept="image/jpg" name="image" readonly hidden/></td>
 				</tr>
 			</table>
 			<input type="submit" name = "button"value="Back" />
