@@ -60,7 +60,7 @@ public class OrderController {
 				List<Product> tasks = service.getAllProducts();
 				model.addAttribute("products", tasks);
 				model.addAttribute("message", "Product added to cart!");
-				return "product";
+				return "viewDetail";
 			} else {
 				return "login";
 			}

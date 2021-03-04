@@ -6,6 +6,12 @@
 <meta charset="ISO-8859-1">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
 <title>View Details Of Product</title>
+<style>
+.left-align-footer {
+  text-align: right;
+} 
+
+</style>
 </head>
 <body>
 	<!-- Navbar -->
@@ -41,7 +47,7 @@
 	<div align="center">
 	<h5>Product Detail </h5><br>
 		<p>HEre is the detail information of the product!</p><br>
-		${message }
+		<%-- ${message } --%>
 		<form id="order" action="/order" method="post">
 			<table style="with: 50%">
 				<tr>
@@ -69,7 +75,18 @@
 			<input type="submit" name = "button"value="Order" />
 		</form>
 	</div>
+	
+	<!-- Footer -->
+	 <footer class="row">
+    <div class="col"> @2016 Company.Inc
+    <a href="#">Privacy </a> &#8226 <a href="#">Terms</a>
+    </div>
+    <div class="col left-align-footer">
+    <a  href="#target-top-home">Back to top</a>
+    </div>
+     </footer>
 <!-- Bootstrap -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+
 </body>
 </html>

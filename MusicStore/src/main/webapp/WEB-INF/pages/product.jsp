@@ -43,6 +43,9 @@ td, th {
 tr:nth-child(even) {
 	background-color: #dddddd;
 }
+.left-align-footer {
+  text-align: right;
+} 
 </style>
 </head>
 <body>
@@ -101,6 +104,15 @@ tr:nth-child(even) {
 			</table>
 		</form>
 	</div>
+		<!-- Footer -->
+	 <footer class="row">
+    <div class="col"> @2016 Company.Inc
+    <a href="#">Privacy </a> &#8226 <a href="#">Terms</a>
+    </div>
+    <div class="col left-align-footer">
+    <a  href="#target-top-home">Back to top</a>
+    </div>
+     </footer>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
 </body>
 </html>
