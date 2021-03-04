@@ -2,6 +2,7 @@ package com.hcl.service;
 
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -47,6 +48,11 @@ public class UserServiceImpl implements UserService {
 		this.bCryptPasswordEncoder = bCryptPasswordEncoder;
 	}
 
+	@Override
+	public List<User> findAllUsers() {
+		return userRepository.findAll();
+	}
+
 	public Optional<User> findByUserName(String userName) {
 		return userRepository.findByUserName(userName);
 	}
@@ -70,6 +76,11 @@ public class UserServiceImpl implements UserService {
 		}
 		return new org.springframework.security.core.userdetails.User(user.get().getUserName(),
 				user.get().getPassword(), mapRolesToAuthorities(user.get().getRoles()));
+	}
+
+	@Override
+	public void deleteUserById(Long id) {
+		userRepository.deleteById(id);
 	}
 
 	private Collection<? extends GrantedAuthority> mapRolesToAuthorities(Collection<Role> roles) {
