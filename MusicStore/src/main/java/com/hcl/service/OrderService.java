@@ -13,6 +13,8 @@ public interface OrderService {
 
 	List<Order> getAllOrders(Long long1);
 
+	void changeStatus(Long userId);
+
 	void clearCart(Long userId);
 
 }

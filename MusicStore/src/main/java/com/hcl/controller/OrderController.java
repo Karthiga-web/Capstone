@@ -67,7 +67,7 @@ public class OrderController {
 		}
 	}
 
-	@GetMapping("/{id}")
+	@GetMapping("/cartRemove/{id}")
 	public String removeFromCart(@PathVariable String id, ModelMap model) {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		Optional<User> usercheck = null;
@@ -160,7 +160,7 @@ public class OrderController {
 			model.addAttribute("orders", orders);
 			return "cart";
 		} else {
-			orderService.clearCart(usercheck.get().getUserId());
+			orderService.changeStatus(usercheck.get().getUserId());
 			return "success";
 		}
 	}
