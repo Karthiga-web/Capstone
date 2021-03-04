@@ -46,10 +46,6 @@
 			</div>
 		</div>
 	</nav>
-	<h5>Product Detail</h5>
-	<br>
-	<p>Here is the detail information of the product!</p>
-	<br>
 	<div align="center">
 		<h5>Product Detail</h5>
 		<br>
@@ -63,8 +59,8 @@
 				</tr>
 				<tr>
 					<td>Category</td>
-					<td><input type="text" name="category" readonly value=${ category}></td>
-					<td><input type="text"name="id" value=${ id} readonly hidden/></td>
+					<td><input type="text" name="category" readonly
+						value=${ category}></td>
 				</tr>
 				<tr>
 					<td>Condition</td>
