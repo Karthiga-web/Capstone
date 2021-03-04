@@ -14,7 +14,9 @@
 img{
     height: 500px;
     }
-
+.left-align-footer {
+  text-align: right;
+} 
 </style>
 </head>
 <body>
@@ -33,7 +35,7 @@ img{
 				<ul class="navbar-nav">
 					<!-- Home tab -->
 					<li class="nav-item"><a class="nav-link active"
-						aria-current="page" href="/">Home</a></li>
+						aria-current="page" href="/" name="target-top-home">Home</a></li>
 					<!-- Products -->
 					<li class="nav-item"><a class="nav-link " href="/product">Products</a>
 					</li>
@@ -101,6 +103,15 @@ img{
 		</button>
 	</div>
 
+	<!-- Footer -->
+	 <footer class="row">
+    <div class="col"> @2016 Company.Inc
+    <a href="#">Privacy </a> &#8226 <a href="#">Terms</a>
+    </div>
+    <div class="col left-align-footer">
+    <a  href="#target-top-home">Back to top</a>
+    </div>
+     </footer>
 	<!-- Bootstrap -->
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
