@@ -87,40 +87,50 @@
 
 <div align="center">
     <div class="panel-body">
-    <form id="product" action="/viewdetail" method="post">
-        <table>
-            <tr>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Phone</th>
-                <th>Username</th>
-                <th>Password</th>
-                <th>Enabled</th>
-            </tr>
-            <c:forEach var="product" items="${user}">
+        <form id="product" action="/viewdetail" method="post">
+            <table>
                 <tr>
-                    <td>${user.name}</td>
-                    <td>${user.email}</td>
-                    <td>${user.phone}</td>
-                    <td>${user.username}</td>
-                    <td>${user.password}</td>
-                    <td>${user.enabled}</td>
-                    <td><a href="viewdetail/${product.id}">Details</a></td>
-                    <td><a href="delete/${product.id}">Delete</a></td>
-                    <td><a href="edit/${product.id}">Edit</a></td>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>username</th>
+                    <th>Email</th>
+                    <th>Password</th>
+                    <th>Phone Number</th>
+                    <th>Address</th>
+                    <th>Apartment Number</th>
+                    <th>City</th>
+                    <th>State</th>
+                    <th>Zip Code</th>
+                    <th>Active</th>
                 </tr>
-            </c:forEach>
-        </table>
+                <c:forEach var="product" items="${user}">
+                    <tr>
+                        <td>${user.firstname}</td>
+                        <td>${user.lastname}</td>
+                        <td>${user.username}</td>
+                        <td>${user.email}</td>
+                        <td>${user.password}</td>
+                        <td>${user.phoneNumber}</td>
+                        <td>${user.address}</td>
+                        <td>${user.apartmentNumber}</td>
+                        <td>${user.city}</td>
+                        <td>${user.state}</td>
+                        <td>${user.zipcode}</td>
+                        <td>${user.active}</td>
+                        <td><a href="delete/${product.id}">Delete</a></td>
+                    </tr>
+                </c:forEach>
+            </table>
         </form>
-</div>
+    </div>
 
     <br>
     <br>
 
-<div>
-    <footer>
-        <pre><p style="text-align: left;">© 2021 Music.ly Inc</p><a th:href="@{/logout}"> Privacy </a><a th:href="@{/logout}"> Terms</a></pre>
-    </footer>
-</div>
+    <div>
+        <footer>
+            <pre><p style="text-align: left;">© 2021 Music.ly Inc</p><a th:href="@{/logout}"> Privacy </a><a th:href="@{/logout}"> Terms</a></pre>
+        </footer>
+    </div>
 </body>
 </html>

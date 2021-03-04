@@ -95,6 +95,16 @@ public class ProductServiceImpl implements ProductService {
 		return productRepo.findProductByName(name);
 	}
 
+	@Override
+	public void deleteById(Long idToDelete) {
+		productRepo.deleteById(idToDelete);
+	}
+
+	@Override
+	public void saveProduct(Product product){
+		this.productRepo.save(product);
+	}
+
 	public List<Product> getAllByQuery(String name, String category, String condition){
 		return productRepo.getAllByQuery(name, category, condition);
 	}
