@@ -26,7 +26,7 @@ public class CartServiceImpl implements CartService {
 		List<Order> orders = orderRepository.findAll();
 		List<Order> userOrders = new ArrayList<>();
 		orders.stream().forEach(order->{
-			if(order.getUserId() == userCartId) {
+			if(order.getUserId() == userCartId && order.getStatus().equalsIgnoreCase("Cart")) {
 				userOrders.add(order);
 			}
 		});

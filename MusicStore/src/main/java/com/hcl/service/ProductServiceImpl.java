@@ -47,7 +47,7 @@ public class ProductServiceImpl implements ProductService {
 			});
 			
 			orderList.stream().forEach(l -> {
-				if (l.getProductId() == id) {
+				if (l.getProductId() == id && l.getStatus().equalsIgnoreCase("Cart")) {
 					countOrder = l;
 				}
 			});
@@ -60,6 +60,7 @@ public class ProductServiceImpl implements ProductService {
 				o3.setProductName(product.get().getName());
 				o3.setProductId(id);
 				o3.setUserId(userId);
+				o3.setStatus("Cart");
 				orderRepository.deleteById(countOrder.getId());
 				orderRepository.save(o3);
 				countOrder = null;
@@ -72,6 +73,7 @@ public class ProductServiceImpl implements ProductService {
 				o2.setProductName(product.get().getName());
 				o2.setProductId(id);
 				o2.setUserId(userId);
+				o2.setStatus("Cart");
 				orderRepository.save(o2);
 			}			
 		} else {
@@ -83,6 +85,7 @@ public class ProductServiceImpl implements ProductService {
 			o1.setProductName(product.get().getName());
 			o1.setProductId(id);
 			o1.setUserId(userId);
+			o1.setStatus("Cart");
 			orderRepository.save(o1);
 		}
 	}

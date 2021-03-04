@@ -30,7 +30,7 @@ public class OrderServiceImpl implements OrderService{
 		List<Order> list1 = repo.findAll();
 		List<Order> list2 = new ArrayList<>();;
 		list1.stream().forEach(a->{
-			if(a.getUserId() == long1) {
+			if(a.getUserId() == long1 && a.getStatus().equalsIgnoreCase("Cart")) {
 				list2.add(a);
 			}
 		});
@@ -38,14 +38,26 @@ public class OrderServiceImpl implements OrderService{
 	}
 
 	@Override
+	public void changeStatus(Long userId) {
+		List<Order> list1 = repo.findAll();
+		list1.stream().forEach(a->{
+			if(a.getStatus().equalsIgnoreCase("Cart")) {
+				a.setStatus("Ordered");
+			}
+			if(a.getUserId() == userId) {
+				repo.save(a);
+			}
+		});
+	}
+
+	@Override
 	public void clearCart(Long userId) {
 		List<Order> list1 = repo.findAll();
 		list1.stream().forEach(a->{
-			if(a.getUserId() == userId) {
+			if(a.getUserId() == userId && a.getStatus().equalsIgnoreCase("Cart")) {
 				repo.deleteById(a.getId());
 			}
 		});
-		
 	}
 
 }

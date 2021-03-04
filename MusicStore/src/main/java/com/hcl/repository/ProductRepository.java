@@ -1,5 +1,6 @@
 package com.hcl.repository;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -17,5 +18,4 @@ public interface ProductRepository extends  JpaRepository<Product, Long>{
 			"or (?2 is null or upper(m.category) like concat('%', upper(?2), '%')) " +
 			"or (?3 is null or upper(m.condition) like concat('%', upper(?3), '%'))")
 	List<Product> getAllByQuery(String name, String category, String condition);
-
 }

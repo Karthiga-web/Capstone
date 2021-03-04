@@ -49,6 +49,13 @@ public class ProductsController {
 		return "index";
 	}
 
+	@GetMapping("/search")
+	public String getAllByQuery (@RequestParam(name="search") String query, ModelMap model) {
+		List<Product> productList = service.getAllByQuery(query,query,query);
+		model.addAttribute("products", productList);
+		return "product";
+	}
+
 	@PostMapping("/decide")
 	public String find(@RequestParam(name = "button") String buttonValue, ModelMap model) {
 		logger.info("Finding user clicked which button");
@@ -66,6 +73,15 @@ public class ProductsController {
 		} else {
 			return "register";
 		}
+	}
+
+	// Gets Product View
+	@GetMapping("/product")
+	String getProductView(ModelMap model) {
+		logger.info("Mapping to products");
+		List<Product> products = service.getAllProducts();
+		model.addAttribute("products", products);
+		return "product";
 	}
 
 	public Long getUserIdMethod() {
@@ -90,7 +106,13 @@ public class ProductsController {
 		return "login";
 	}
 
-	@PostMapping("/register")
+	// Gets register View
+	@GetMapping("/register")
+	String getRegisterView(ModelMap model) {
+		return "register";
+	}
+
+	@PostMapping("/registerdone")
 	public String registerUser(@ModelAttribute("user") User user, ModelMap model) {
 		logger.info("registration page entered");
 		Optional<User> usercheck = userService.findByUserName(user.getUserName());
