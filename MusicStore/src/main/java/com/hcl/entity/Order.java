@@ -35,5 +35,6 @@ public class Order {
 	Long quantity;
 	@Column(name = "price")
 	Long price;
-	
+	@Column(name = "status")
+	String status;
 }

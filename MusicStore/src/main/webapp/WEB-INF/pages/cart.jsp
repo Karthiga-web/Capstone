@@ -64,7 +64,7 @@ tr:nth-child(even) {
 						<td>${Order.unitPrice}</td>
 						<td>${Order.quantity}</td>
 						<td>${Order.price}</td>
-						<td><a href="/${Order.id}">Remove</a></td>
+						<td><a href="/cartRemove/${Order.id}">Remove</a></td>
 					</tr>
 				</c:forEach>
 			</table>
