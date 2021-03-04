@@ -68,6 +68,15 @@ public class ProductsController {
 		}
 	}
 
+	// Gets Product View
+	@GetMapping("/product")
+	String getProductView(ModelMap model) {
+		logger.info("Mapping to products");
+		List<Product> products = service.getAllProducts();
+		model.addAttribute("products", products);
+		return "product";
+	}
+
 	public Long getUserIdMethod() {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		Optional<User> usercheck = null;
@@ -90,7 +99,13 @@ public class ProductsController {
 		return "login";
 	}
 
-	@PostMapping("/register")
+	// Gets register View
+	@GetMapping("/register")
+	String getRegisterView(ModelMap model) {
+		return "register";
+	}
+
+	@PostMapping("/registerdone")
 	public String registerUser(@ModelAttribute("user") User user, ModelMap model) {
 		logger.info("registration page entered");
 		Optional<User> usercheck = userService.findByUserName(user.getUserName());

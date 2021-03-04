@@ -41,7 +41,7 @@
 	<!--Registration Form  -->
 	<div align="center">
 		${message }
-		<form id="register" action="/register" method="post">
+		<form id="register" action="/registerdone" method="post">
 			<table style="with: 50%">
 				<tr>
 					<td>Name</td>
