@@ -5,7 +5,11 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
+	crossorigin="anonymous">
 <title>View Cart</title>
 <style>
 #ex_table {
@@ -67,23 +71,25 @@ tr:nth-child(even) {
 					<!-- Welcome User -->
 					<li class="nav-item"> <a class="nav-link">Welcome: ${ username}</a></li>
 					<!-- Logout -->
-					<li class="nav-item"><a class="nav-link" href="<c:url value="/logout"/>">Logout</a>
-					</li>
+					<li class="nav-item"><a class="nav-link"
+						href="<c:url value="/logout"/>">Logout</a></li>
 				</ul>
 			</div>
 		</div>
 	</nav>
 	<div align="center">
+		<h3>Cart</h3>
+		<h5>All the selected products in your Shopping Cart</h5>
 		${message }
 		<form id="cartaction" action="/cartAction" method="post">
-			<input type="submit" name="button" value="Clear Cart" /><br> <input
-				type="submit" name="button" value="Check Out" />
+			<input type="submit" style="background-color: orangered"name="button" value="Clear Cart" /> <input
+				type="submit" name="button" style="background-color: greenyellow" value="Check Out" />
 			<table>
 				<tr>
 					<th>Product</th>
 					<th>Unit price</th>
 					<th>Quantity</th>
-					<th>Price</th>
+					<th>Price in $</th>
 					<th>Action</th>
 				</tr>
 				<c:forEach var="Order" items="${orders}">
@@ -92,13 +98,16 @@ tr:nth-child(even) {
 						<td>${Order.unitPrice}</td>
 						<td>${Order.quantity}</td>
 						<td>${Order.price}</td>
-						<td><a href="/cartRemove/${Order.id}">Remove</a></td>
+						<td><a style="color: darkred" href="/cartRemove/${Order.id}">Remove</a></td>
 					</tr>
 				</c:forEach>
 			</table>
 			<input type="submit" name="button" value="Continue Shopping" />
 		</form>
 	</div>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+		crossorigin="anonymous"></script>
 </body>
 </html>

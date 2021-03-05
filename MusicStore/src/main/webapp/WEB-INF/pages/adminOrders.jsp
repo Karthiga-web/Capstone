@@ -95,12 +95,12 @@
                     <th>User ID</th>
                     <th>Product ID</th>
                     <th>Product Name</th>
-                    <th>Unit Price</th>
+                    <th>Unit Price in $</th>
                     <th>Quantity</th>
-                    <th>Price</th>
+                    <th>Price in $</th>
                     <th>Status</th>
                 </tr>
-                <c:forEach var="order" items="${orders}">
+                <c:forEach var="order" items="${order}">
                     <tr>
                         <td>${order.userId}</td>
                         <td>${order.productId}</td>
@@ -109,14 +109,12 @@
                         <td>${order.quantity}</td>
                         <td>${order.price}</td>
                         <td>${order.status}</td>
-                        <td><a type="button" class="btn btn-success"
-                               href="/admin-updateOrder/{order.id}">Update</a></td>
+                        <td><a type="button" class="btn btn-success" href="/admin-updateOrder/{order.id}">Update</a></td>
                     </tr>
                 </c:forEach>
             </table>
         </form>
     </div>
-</div>
 
 <br>
 <br>

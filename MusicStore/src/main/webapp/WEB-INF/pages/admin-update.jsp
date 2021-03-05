@@ -102,7 +102,7 @@
             <input type="text" name="category" value="${current.category}" />       <!--Product Category-->
             <label>Condition</label>
             <input type="text" name="condition" value="${current.condition}" />     <!--Product Condition-->
-            <label>Price</label>
+            <label>Price in $</label>
             <input type="text" name="price" value="${current.price}" />             <!--Product Price-->
             <img src="data:image/jpg;base64,${current.base64image}" width="100" height="100" />
             <input type="file" accept="image/jpg" name="image345"/>                 <!--Product Image-->

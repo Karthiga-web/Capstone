@@ -68,7 +68,7 @@ tr:nth-child(even) {
 				<ul class="navbar-nav">
 					<!-- Home tab -->
 					<li class="nav-item"><a class="nav-link active"
-						aria-current="page" href="/" name="target-top-home" >Home</a></li>
+						aria-current="page" href="/" name="target-top-home">Home</a></li>
 					<!-- Products -->
 					<li class="nav-item"><a class="nav-link " href="/product">Products</a>
 					</li>
@@ -84,6 +84,8 @@ tr:nth-child(even) {
 	</nav>
 	<!--Tables  -->
 	<div align="center">
+		<h3>All Products</h3>
+		<h5>Checkout All the Awesome products available now!</h5>
 		<form id="search" action="/search" method="get">
 			<input type="text" name="search" placeholder="search"> <input
 				type="submit" name="button" value="search">
@@ -95,7 +97,7 @@ tr:nth-child(even) {
 					<th>Name</th>
 					<th>Category</th>
 					<th>Condition</th>
-					<th>Description</th>
+					<th>Price in $</th>
 					<th>Click to Update</th>
 				</tr>
 				<c:forEach var="product" items="${products}">

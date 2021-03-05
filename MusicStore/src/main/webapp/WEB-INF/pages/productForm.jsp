@@ -57,7 +57,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label" for="price"> Price </label> <input
+                    <label class="control-label" for="price"> Price in $</label> <input
                         id="price" class="form-control" field="*{price}" required
                         autofocus="autofocus"/>
                 </div>
