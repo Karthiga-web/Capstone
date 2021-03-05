@@ -44,10 +44,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
         .antMatchers("/login").permitAll()
         .antMatchers("/viewdetail/*").permitAll()
         .antMatchers("/product").permitAll()
+        .antMatchers("/success").permitAll()
         
         .antMatchers("/cart").hasRole("USER")
         .antMatchers("/receipt").hasRole("USER")
-        .antMatchers("/success").hasRole("USER")
         .antMatchers("/productloggeduser").hasRole("USER")
         .antMatchers("/viewDetailloggeduser").hasRole("USER")
         .antMatchers("/cartRemove/*").hasRole("USER")
