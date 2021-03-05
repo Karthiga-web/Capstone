@@ -12,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,7 +21,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.hcl.entity.Order;
@@ -84,26 +82,6 @@ public class ProductsController {
 			return "product";
 		}
 	}
-
-//	@PostMapping("/decide")
-//	public String find(@RequestParam(name = "button") String buttonValue, ModelMap model) {
-//		logger.info("Finding user clicked which button");
-//		if (buttonValue.equals("Login")) {
-//			return "login";
-//		} else if (buttonValue.equals("Product")) {
-//			List<Product> products = service.getAllProducts();
-//			model.addAttribute("products", products);
-//			return "product";
-//		} else if (buttonValue.equals("Cart")) {
-//			Long userCartId = getUserIdMethod();
-//			List<Order> order = cartService.cartMethod(userCartId);
-//			model.addAttribute("username", getUserName());
-//			model.addAttribute("orders", order);
-//			return "cart";
-//		} else {
-//			return "register";
-//		}
-//	}
 
 	// Gets Product View
 	@GetMapping("/product")
