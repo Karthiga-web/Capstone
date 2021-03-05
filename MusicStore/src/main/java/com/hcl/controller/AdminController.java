@@ -2,12 +2,16 @@ package com.hcl.controller;
 
 import com.hcl.entity.Order;
 import com.hcl.entity.User;
+import com.hcl.entity.Role;
 import com.hcl.service.OrderService;
 import com.hcl.service.ProductService;
 import com.hcl.entity.Product;
 
 import com.hcl.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -31,6 +35,8 @@ public class AdminController {
     @Autowired
     OrderService orderService;
 
+    String role;
+    
     @GetMapping("/adminCreateProduct")
     String getCreateProductView(ModelMap model) {
         return "adminCreateProduct";
@@ -65,24 +71,65 @@ public class AdminController {
 
 
     @GetMapping("/admin-update/{id}")
-    public String updateProduct(@PathVariable String id, Model model){
-        model.addAttribute("product", productService.findProductById(Long.valueOf(id)));
-        return "productForm";
+    public String updateProduct(@PathVariable String id, ModelMap modelMap){
+        modelMap.addAttribute("current", productService.getProductById(Long.valueOf(id)));
+        return "admin-update";
+    }
+    
+    @PostMapping("/admin-update")
+    public String submitUpdate(@ModelAttribute("newProduct") Product newProduct,
+                               @RequestParam("image345") MultipartFile multipartFile) throws IOException {
+        newProduct.setId(newProduct.getId());
+        newProduct.setName(newProduct.getName());
+        newProduct.setCategory(newProduct.getCategory());
+        newProduct.setCondition(newProduct.getCondition());
+        newProduct.setPrice(newProduct.getPrice());
+        newProduct.setImage(multipartFile.getBytes());
+        productService.saveProduct(newProduct);
+
+        return "adminHome";
+    }
+    
+    @GetMapping("/admin-orderUpdate/{id}")
+    public String updateOrder(@PathVariable String id, ModelMap modelMap){
+        modelMap.addAttribute("current", orderService.getOrderById(Long.valueOf(id)));
+        return "admin-orderUpdate";
+    }
+    
+    @PostMapping("/admin-orderUpdate")
+    public String submitUpdate(@ModelAttribute("newOrder") Order newOrder) throws IOException {
+        newOrder.setUserId(newOrder.getUserId());
+        newOrder.setProductId(newOrder.getProductId());
+        newOrder.setProductName(newOrder.getProductName());
+        newOrder.setUnitPrice(newOrder.getUnitPrice());
+        newOrder.setQuantity(newOrder.getQuantity());
+        newOrder.setStatus(newOrder.getStatus());
+        orderService.saveOrder(newOrder);
+
+        return "adminHome";
     }
 
     @GetMapping("admin-delete/{id}")
     public String deleteById(@PathVariable String id, Model model){
-    	List<Product> products = productService.getAllProducts();
-        model.addAttribute("products", products);
-        productService.deleteById(Long.valueOf(id));
-        return "adminProduct";
+    	long productId;
+		productId = Long.parseLong(id);
+    	productService.deleteById(productId);
+		List<Product> products = productService.getAllProducts();
+		model.addAttribute("products", products);
+		model.addAttribute("message", "Product was removed!");
+		return "adminProduct";
     }
     
-//    @GetMapping("delete-user/{id}")
-//    public String deleteUserById(@PathVariable String id){
-//        userService.deleteUserById(Long.valueOf(id));
-//        return "adminCustomerManage";
-//    }
+    @GetMapping("delete-user/{id}")
+    public String deleteUserById(@PathVariable String id, Model model){
+    	long userId;
+		userId = Long.parseLong(id);
+    	userService.deleteUserById(userId);
+		List<User> users = userService.getAllUsers();
+		model.addAttribute("users", users);
+		model.addAttribute("message", "User was removed!");
+        return "adminCustomerManage";
+    }
 
     @PostMapping("/admin-save")
     public String saveProduct(@ModelAttribute("product") Product product) {
@@ -95,6 +142,13 @@ public class AdminController {
         List<Product> products = productService.getAllProducts();
         modelMap.addAttribute("products", products);
         return "adminProduct";
+    }
+    
+    @GetMapping("/adminOrders")
+    public String showOrders(ModelMap modelMap) {
+        List<Order> orders = orderService.getAllOrders();
+        modelMap.addAttribute("orders", orders);
+        return "adminOrders";
     }
 
     @PostMapping("/productFormDone")

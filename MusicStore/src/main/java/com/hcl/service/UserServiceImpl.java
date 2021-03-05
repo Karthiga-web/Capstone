@@ -16,6 +16,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.hcl.entity.Product;
 import com.hcl.entity.Role;
 import com.hcl.entity.User;
 import com.hcl.repository.RoleRepository;
@@ -46,6 +47,11 @@ public class UserServiceImpl implements UserService {
 		this.userRepository = userRepository;
 		this.roleRepository = roleRepository;
 		this.bCryptPasswordEncoder = bCryptPasswordEncoder;
+	}
+	
+	@Override
+	public List<User> getAllUsers() {
+		return userRepository.findAll();
 	}
 
 	@Override

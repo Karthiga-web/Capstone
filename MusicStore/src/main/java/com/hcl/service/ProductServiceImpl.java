@@ -33,6 +33,12 @@ public class ProductServiceImpl implements ProductService {
 		// TODO Auto-generated method stub
 		return productRepo.findById(productId);
 	}
+	
+	@Override
+	public Product getProductById(Long id) {
+		return productRepo.findById(id).get();
+	}
+	
 	int count = 0;
 	@Override
 	public void saveToCart(Long id, Long userId) {

@@ -122,6 +122,8 @@
                         <td>${user.country}</td>
                         <td>${user.zipcode}</td>
                         <td>${user.active}</td>
+                        <td><a  type="button" class="btn btn-success"
+                        	 href="/delete-user/${user.userId}">Delete</a></td>
                     </tr>
                 </c:forEach>
             </table>
