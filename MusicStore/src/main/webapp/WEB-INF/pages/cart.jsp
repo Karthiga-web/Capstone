@@ -69,9 +69,6 @@ tr:nth-child(even) {
 					<!-- Logout -->
 					<li class="nav-item"><a class="nav-link" href="<c:url value="/logout"/>">Logout</a>
 					</li>
-					<!-- Cart -->
-					<li class="nav-item"><a class="nav-link" href="/cart">Cart</a>
-					</li>
 				</ul>
 			</div>
 		</div>

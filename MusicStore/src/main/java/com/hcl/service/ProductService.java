@@ -11,6 +11,8 @@ public interface ProductService {
 
 	Optional<Product> findProductById(long productId);
 
+	Product getProductById(Long id);
+
 	void saveToCart(Long id, Long userId);
 
 	Optional<Product> findProductByName(String name);

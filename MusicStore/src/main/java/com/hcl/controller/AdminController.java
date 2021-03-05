@@ -13,8 +13,10 @@ import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.method.annotation.PrincipalMethodArgumentResolver;
 
 import java.io.IOException;
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -65,9 +67,23 @@ public class AdminController {
 
 
     @GetMapping("/admin-update/{id}")
-    public String updateProduct(@PathVariable String id, Model model){
-        model.addAttribute("product", productService.findProductById(Long.valueOf(id)));
-        return "productForm";
+    public String updateProduct(@PathVariable String id, ModelMap modelMap){
+        modelMap.addAttribute("current", productService.getProductById(Long.valueOf(id)));
+        return "admin-update";
+    }
+
+    @PostMapping("/admin-update")
+    public String submitUpdate(@ModelAttribute("newProduct") Product newProduct,
+                               @RequestParam("image345") MultipartFile multipartFile) throws IOException {
+        newProduct.setId(newProduct.getId());
+        newProduct.setName(newProduct.getName());
+        newProduct.setCategory(newProduct.getCategory());
+        newProduct.setCondition(newProduct.getCondition());
+        newProduct.setPrice(newProduct.getPrice());
+        newProduct.setImage(multipartFile.getBytes());
+        productService.saveProduct(newProduct);
+
+        return "adminHome";
     }
 
     @GetMapping("admin-delete/{id}")
