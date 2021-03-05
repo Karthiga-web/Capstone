@@ -59,9 +59,8 @@
 				</tr>
 				<tr>
 					<td>Category</td>
-					<td><input type="text" name="category" readonly
-						value=${ category}></td>
-					<td><input type="text" name="id" value=${ id} readonly hidden /></td>
+					<td><input type="text" name="category" readonly value=${ category}></td>
+					<td><input type="text" name="id" value=${ id} readonly hidden = "true"/></td>
 				</tr>
 				<tr>
 					<td>Condition</td>
