@@ -50,16 +50,17 @@ public class ProductsController {
 	String role;
 
 	@GetMapping("/")
-	String hello() {
+	String hello(ModelMap model) {
 		logger.info("Mapping to index");
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		authentication.getAuthorities().forEach(a -> {
 			role = a.getAuthority();
 		});
+		model.addAttribute("username", authentication.getName());
 		if (role.equalsIgnoreCase("ROLE_ADMIN")) {
 			return "adminHome";
 		} else if (role.equalsIgnoreCase("ROLE_USER")) {
-			return "index";
+			return "indexloggeduser";
 		} else {
 			return "index";
 		}
@@ -192,7 +193,7 @@ public class ProductsController {
 		});
 		model.addAttribute("username", authentication.getName());
 		if(authentication.isAuthenticated() && role.equalsIgnoreCase("ROLE_USER")) {
-			return "index";
+			return "indexloggeduser";
 		}else if(authentication.isAuthenticated() && role.equalsIgnoreCase("ROLE_ADMIN")){
 			return "adminHome";
 		}else {
@@ -251,16 +252,17 @@ public class ProductsController {
 	}
 	
 	@PostMapping("/errorMapping")
-	String errorMapping() {
+	String errorMapping(ModelMap model) {
 		logger.info("Mapping to index");
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		authentication.getAuthorities().forEach(a -> {
 			role = a.getAuthority();
 		});
+		model.addAttribute("username", authentication.getName());
 		if (role.equalsIgnoreCase("ROLE_ADMIN")) {
 			return "adminHome";
 		} else if (role.equalsIgnoreCase("ROLE_USER")) {
-			return "index";
+			return "indexloggeduser";
 		} else {
 			return "index";
 		}
