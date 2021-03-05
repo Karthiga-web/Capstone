@@ -50,6 +50,7 @@ public class ProductsController {
 	Logger logger = LoggerFactory.getLogger(ProductsController.class);
 
 	String role;
+
 	@GetMapping("/")
 	String hello() {
 		logger.info("Mapping to index");
@@ -79,9 +80,9 @@ public class ProductsController {
 			return "adminProduct";
 		} else if (role.equalsIgnoreCase("ROLE_USER")) {
 			return "productloggeduser";
-		}else {
-		return "product";
-	}
+		} else {
+			return "product";
+		}
 	}
 
 //	@PostMapping("/decide")
@@ -119,20 +120,20 @@ public class ProductsController {
 			return "adminProduct";
 		} else if (role.equalsIgnoreCase("ROLE_USER")) {
 			return "productloggeduser";
-		}else {
-		return "product";
-	}
-	}
-	
-	// Gets Product View
-		@GetMapping("/cart")
-		String cart(ModelMap model) {
-			Long userCartId = getUserIdMethod();
-			List<Order> order = cartService.cartMethod(userCartId);
-			model.addAttribute("username", getUserName());
-			model.addAttribute("orders", order);
-			return "cart";
+		} else {
+			return "product";
 		}
+	}
+
+	// Gets Product View
+	@GetMapping("/cart")
+	String cart(ModelMap model) {
+		Long userCartId = getUserIdMethod();
+		List<Order> order = cartService.cartMethod(userCartId);
+		model.addAttribute("username", getUserName());
+		model.addAttribute("orders", order);
+		return "cart";
+	}
 
 	// Gets Product View
 	@GetMapping("/logout")
@@ -170,7 +171,7 @@ public class ProductsController {
 		}
 		return "login";
 	}
-	
+
 	// Gets register View
 	@GetMapping("/register")
 	String getRegisterView(ModelMap model) {
@@ -206,8 +207,19 @@ public class ProductsController {
 	}
 
 	@PostMapping("/success")
-	public String success() {
-		return "login";
+	public String success(ModelMap model) {
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		authentication.getAuthorities().forEach(a -> {
+			role = a.getAuthority();
+		});
+		model.addAttribute("username", authentication.getName());
+		if(authentication.isAuthenticated() && role.equalsIgnoreCase("ROLE_USER")) {
+			return "index";
+		}else if(authentication.isAuthenticated() && role.equalsIgnoreCase("ROLE_ADMIN")){
+			return "adminHome";
+		}else {
+			return "login";
+		}
 	}
 
 	@GetMapping("/viewdetail/{id}")
@@ -233,8 +245,8 @@ public class ProductsController {
 				return "adminProduct";
 			} else if (role.equalsIgnoreCase("ROLE_USER")) {
 				return "viewDetailloggeduser";
-			}else {
-			return "viewDetail";
+			} else {
+				return "viewDetail";
 			}
 		} else {
 			List<Product> tasks = service.getAllProducts();
@@ -249,9 +261,31 @@ public class ProductsController {
 				return "adminProduct";
 			} else if (role.equalsIgnoreCase("ROLE_USER")) {
 				return "productloggeduser";
-			}else {
-			return "product";
+			} else {
+				return "product";
+			}
 		}
 	}
-}
+
+	@RequestMapping("/403")
+	public String accessdenied() {
+		return "403";
+	}
+	
+	@PostMapping("/errorMapping")
+	String errorMapping() {
+		logger.info("Mapping to index");
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		authentication.getAuthorities().forEach(a -> {
+			role = a.getAuthority();
+		});
+		if (role.equalsIgnoreCase("ROLE_ADMIN")) {
+			return "adminHome";
+		} else if (role.equalsIgnoreCase("ROLE_USER")) {
+			return "index";
+		} else {
+			return "index";
+		}
+	}
+
 }
