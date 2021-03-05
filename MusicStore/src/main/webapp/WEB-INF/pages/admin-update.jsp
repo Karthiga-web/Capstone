@@ -18,16 +18,32 @@
     #ex_table {
         table-layout: fixed !important;
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 7348e21f427fdc7c71391f22d2ea88c313ab7b33
     #ex_table thead tr {
         width: 500px !important;
         position: fixed !important;
     }
+<<<<<<< HEAD
     #ex_table tbody tr {
         width: 500px !important;
     }
     #ex_table th, td {
         width: 100px;
     }
+=======
+
+    #ex_table tbody tr {
+        width: 500px !important;
+    }
+
+    #ex_table th, td {
+        width: 100px;
+    }
+
+>>>>>>> 7348e21f427fdc7c71391f22d2ea88c313ab7b33
     table {
         font-family: arial, sans-serif;
         border-collapse: collapse;
@@ -35,12 +51,20 @@
         vertical-align: text-bottom;
         width: 100%;
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 7348e21f427fdc7c71391f22d2ea88c313ab7b33
     td, th {
         border: 1px solid #dddddd;
         text-align: left;
         vertical-align: bottom;
         padding: 8px;
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 7348e21f427fdc7c71391f22d2ea88c313ab7b33
     tr:nth-child(even) {
         background-color: #dddddd;
     }

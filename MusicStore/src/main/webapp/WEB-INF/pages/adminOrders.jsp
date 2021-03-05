@@ -110,7 +110,7 @@
                         <td>${order.price}</td>
                         <td>${order.status}</td>
                         <td><a type="button" class="btn btn-success"
-                         href="/admin-updateOrder/{order.id}">Update</a></td>
+                         href="/admin-updateOrder/${order.id}">Update</a></td>
                     </tr>
                 </c:forEach>
             </table>

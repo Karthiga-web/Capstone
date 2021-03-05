@@ -17,8 +17,10 @@ import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.method.annotation.PrincipalMethodArgumentResolver;
 
 import java.io.IOException;
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -75,7 +77,7 @@ public class AdminController {
         modelMap.addAttribute("current", productService.getProductById(Long.valueOf(id)));
         return "admin-update";
     }
-    
+
     @PostMapping("/admin-update")
     public String submitUpdate(@ModelAttribute("newProduct") Product newProduct,
                                @RequestParam("image345") MultipartFile multipartFile) throws IOException {
@@ -88,6 +90,7 @@ public class AdminController {
         productService.saveProduct(newProduct);
 
         return "adminHome";
+
     }
     
     @GetMapping("/admin-orderUpdate/{id}")
