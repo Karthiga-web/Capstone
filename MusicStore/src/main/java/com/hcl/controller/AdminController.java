@@ -70,13 +70,13 @@ public class AdminController {
         return "productForm";
     }
 
-    @GetMapping("admin-delete/{id}")
-    public String deleteById(@PathVariable String id, Model model){
-    	List<Product> products = productService.getAllProducts();
-        model.addAttribute("products", products);
-        productService.deleteById(Long.valueOf(id));
-        return "adminProduct";
-    }
+//    @GetMapping("admin-delete/{id}")
+//    public String deleteById(@PathVariable String id, Model model){
+//    	List<Product> products = productService.getAllProducts();
+//        model.addAttribute("products", products);
+//        productService.deleteById(Long.valueOf(id));
+//        return "adminProduct";
+//    }
     
     @GetMapping("delete-user/{id}")
     public String deleteUserById(@PathVariable String id){
