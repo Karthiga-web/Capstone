@@ -41,26 +41,49 @@ public class OrderController {
 	long total = 0;
 	Logger logger = LoggerFactory.getLogger(ProductsController.class);
 
+	String role;
+
 	@PostMapping("/order")
-	public String orderNow(@ModelAttribute("product") Product product,
+	public String orderNow(@ModelAttribute("product") Product product, @RequestParam(name = "id") String id,
 			@RequestParam(name = "button") String buttonValue, ModelMap model) {
 		if (buttonValue.equalsIgnoreCase("Back")) {
 			List<Product> tasks = service.getAllProducts();
 			model.addAttribute("products", tasks);
+			Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+			authentication.getAuthorities().forEach(a -> {
+				role = a.getAuthority();
+			});
+			model.addAttribute("username", authentication.getName());
+			if (role.equalsIgnoreCase("ROLE_ADMIN")) {
+				return "adminProduct";
+			} else if (role.equalsIgnoreCase("ROLE_USER")) {
+				return "productloggeduser";
+			}else {
 			return "product";
+			}
 		} else {
 			Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 			Optional<User> usercheck = null;
 			Optional<Product> productcheck = null;
-			if (!(authentication instanceof AnonymousAuthenticationToken)) {
+			authentication.getAuthorities().forEach(a -> {
+				role = a.getAuthority();
+			});
+			if (!(authentication instanceof AnonymousAuthenticationToken) &&  role.equalsIgnoreCase("ROLE_USER")) {
 				String currentUserName = authentication.getName();
 				usercheck = userService.findByUserName(currentUserName);
 				productcheck = service.findProductById(product.getId());
 				service.saveToCart(productcheck.get().getId(), usercheck.get().getUserId());
 				List<Product> tasks = service.getAllProducts();
 				model.addAttribute("products", tasks);
+				model.addAttribute("username", authentication.getName());
 				model.addAttribute("message", "Product added to cart!");
+				if (role.equalsIgnoreCase("ROLE_ADMIN")) {
+					return "adminProduct";
+				} else if (role.equalsIgnoreCase("ROLE_USER")) {
+					return "productloggeduser";
+				}else {
 				return "product";
+				}
 			} else {
 				return "login";
 			}
@@ -71,7 +94,7 @@ public class OrderController {
 	public String removeFromCart(@PathVariable String id, ModelMap model) {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		Optional<User> usercheck = null;
-		if (!(authentication instanceof AnonymousAuthenticationToken)) {
+		if (!(authentication instanceof AnonymousAuthenticationToken) && role.equalsIgnoreCase("ROLE_USER")) {
 			String currentUserName = authentication.getName();
 			usercheck = userService.findByUserName(currentUserName);
 		}
@@ -84,11 +107,13 @@ public class OrderController {
 			orderService.deleteOrder(newProductEntity);
 			List<Order> orders = orderService.getAllOrders(usercheck.get().getUserId());
 			model.addAttribute("orders", orders);
+			model.addAttribute("username", authentication.getName());
 			model.addAttribute("message", "Order was removed!");
 			return "cart";
 		} else {
 			List<Order> orders = orderService.getAllOrders(usercheck.get().getUserId());
 			model.addAttribute("orders", orders);
+			model.addAttribute("username", authentication.getName());
 			model.addAttribute("message", "Order cannot be removed! Error!");
 			return "cart";
 		}
@@ -98,12 +123,13 @@ public class OrderController {
 	public String clearCart(@RequestParam(name = "button") String buttonValue, ModelMap model) {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		Optional<User> usercheck = null;
-		if (!(authentication instanceof AnonymousAuthenticationToken)) {
+		if (!(authentication instanceof AnonymousAuthenticationToken) && role.equalsIgnoreCase("ROLE_USER")) {
 			String currentUserName = authentication.getName();
 			usercheck = userService.findByUserName(currentUserName);
 		}
 		if (buttonValue.equals("Clear Cart")) {
 			orderService.clearCart(usercheck.get().getUserId());
+			model.addAttribute("username", authentication.getName());
 			model.addAttribute("message", "Empty Cart!");
 			return "cart";
 		} else if (buttonValue.equals("Check Out")) {
@@ -132,12 +158,23 @@ public class OrderController {
 			model.addAttribute("orders", orders);
 			total = getTotalMethod(orders);
 			model.addAttribute("total", ("$" + total));
+			model.addAttribute("username", authentication.getName());
 			return "receipt";
 		} else {
 			List<Product> products = service.getAllProducts();
 			model.addAttribute("products", products);
+			authentication.getAuthorities().forEach(a -> {
+				role = a.getAuthority();
+			});
+			model.addAttribute("username", authentication.getName());
+			if (role.equalsIgnoreCase("ROLE_ADMIN")) {
+				return "adminProduct";
+			} else if (role.equalsIgnoreCase("ROLE_USER")) {
+				return "productloggeduser";
+			} else {
 			return "product";
 		}
+	}
 	}
 
 	private long getTotalMethod(List<Order> orders) {
@@ -151,16 +188,18 @@ public class OrderController {
 	public String submitOrder(@RequestParam(name = "button") String buttonValue, ModelMap model) {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		Optional<User> usercheck = null;
-		if (!(authentication instanceof AnonymousAuthenticationToken)) {
+		if (!(authentication instanceof AnonymousAuthenticationToken) && role.equalsIgnoreCase("ROLE_USER")) {
 			String currentUserName = authentication.getName();
 			usercheck = userService.findByUserName(currentUserName);
 		}
 		if (buttonValue.equalsIgnoreCase("Back") || buttonValue.equalsIgnoreCase("Cancel")) {
 			List<Order> orders = orderService.getAllOrders(usercheck.get().getUserId());
+			model.addAttribute("username", authentication.getName());
 			model.addAttribute("orders", orders);
 			return "cart";
 		} else {
 			orderService.changeStatus(usercheck.get().getUserId());
+			model.addAttribute("username", authentication.getName());
 			return "success";
 		}
 	}

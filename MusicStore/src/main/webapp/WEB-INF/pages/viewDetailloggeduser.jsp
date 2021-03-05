@@ -17,7 +17,6 @@
 </style>
 </head>
 <body>
-	<!-- Navbar -->
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 		<div class="container-fluid">
 			<!-- brand header -->
@@ -32,17 +31,16 @@
 				<ul class="navbar-nav">
 					<!-- Home tab -->
 					<li class="nav-item"><a class="nav-link active"
-						aria-current="page" href="/" name="target-top-home">Home</a></li>
+						aria-current="page" href="/" name="target-top-home" >Home</a></li>
 					<!-- Products -->
 					<li class="nav-item"><a class="nav-link " href="/product">Products</a>
 					</li>
 					<!-- Welcome User -->
-					<li> Welcome: </li>
+					<li class="nav-item"> <a class="nav-link">Welcome: ${ username}</a></li>
 					<!-- Logout -->
-					<li class="nav-item"><a class="nav-link" href="#">Logout</a>
-					</li>
+					<li class="nav-item"><a class="nav-link" href="<c:url value="/logout"/>">Logout</a></li>
 					<!-- Cart -->
-					<li class="nav-item"><a class="nav-link" href="#">Cart</a>
+					<li class="nav-item"><a class="nav-link" href="/cart">Cart</a>
 					</li>
 				</ul>
 			</div>

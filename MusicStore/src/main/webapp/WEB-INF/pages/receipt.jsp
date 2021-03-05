@@ -5,13 +5,13 @@
 <html>
 <head>
 <style>
-div {
-	background-color: lightgrey;
-	width: 300px;
-	border: 15px solid green;
-	padding: 50px;
-	margin: 20px;
-}
+/* div { */
+/* 	background-color: lightgrey; */
+/* 	width: 300px; */
+/* 	border: 15px solid green; */
+/* 	padding: 50px; */
+/* 	margin: 20px; */
+/* } */
 </style>
 <meta charset="ISO-8859-1">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
@@ -37,11 +37,11 @@ div {
 					<li class="nav-item"><a class="nav-link " href="/product">Products</a>
 					</li>
 					<!-- Welcome User -->
-					<li>Welcome:</li>
+					<li class="nav-item"> <a class="nav-link">Welcome: ${ username}</a></li>
 					<!-- Logout -->
-					<li class="nav-item"><a class="nav-link" href="#">Logout</a></li>
+					<li class="nav-item"><a class="nav-link" href="<c:url value="/logout"/>">Logout</a></li>
 					<!-- Cart -->
-					<li class="nav-item"><a class="nav-link" href="#">Cart</a></li>
+					<li class="nav-item"><a class="nav-link" href="/cart">Cart</a></li>
 				</ul>
 			</div>
 		</div>

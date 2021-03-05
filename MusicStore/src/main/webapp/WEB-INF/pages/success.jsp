@@ -27,13 +27,11 @@
 					<li class="nav-item"><a class="nav-link " href="/product">Products</a>
 					</li>
 					<!-- Welcome User -->
-					<li> Welcome: </li>
+					<li class="nav-item"> <a class="nav-link">Welcome: ${ username}</a></li>
 					<!-- Logout -->
-					<li class="nav-item"><a class="nav-link" href="#">Logout</a>
-					</li>
+					<li class="nav-item"><a class="nav-link" href="<c:url value="/logout"/>">Logout</a></li>
 					<!-- Cart -->
-					<li class="nav-item"><a class="nav-link" href="#">Cart</a>
-					</li>
+					<li class="nav-item"><a class="nav-link" href="/cart">Cart</a></li>
 				</ul>
 			</div>
 		</div>

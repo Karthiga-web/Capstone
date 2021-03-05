@@ -70,27 +70,39 @@ public class ProductsController {
 	public String getAllByQuery(@RequestParam(name = "search") String query, ModelMap model) {
 		List<Product> productList = service.getAllByQuery(query, query, query);
 		model.addAttribute("products", productList);
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		authentication.getAuthorities().forEach(a -> {
+			role = a.getAuthority();
+		});
+		model.addAttribute("username", authentication.getName());
+		if (role.equalsIgnoreCase("ROLE_ADMIN")) {
+			return "adminProduct";
+		} else if (role.equalsIgnoreCase("ROLE_USER")) {
+			return "productloggeduser";
+		}else {
 		return "product";
 	}
-
-	@PostMapping("/decide")
-	public String find(@RequestParam(name = "button") String buttonValue, ModelMap model) {
-		logger.info("Finding user clicked which button");
-		if (buttonValue.equals("Login")) {
-			return "login";
-		} else if (buttonValue.equals("Product")) {
-			List<Product> products = service.getAllProducts();
-			model.addAttribute("products", products);
-			return "product";
-		} else if (buttonValue.equals("Cart")) {
-			Long userCartId = getUserIdMethod();
-			List<Order> order = cartService.cartMethod(userCartId);
-			model.addAttribute("orders", order);
-			return "cart";
-		} else {
-			return "register";
-		}
 	}
+
+//	@PostMapping("/decide")
+//	public String find(@RequestParam(name = "button") String buttonValue, ModelMap model) {
+//		logger.info("Finding user clicked which button");
+//		if (buttonValue.equals("Login")) {
+//			return "login";
+//		} else if (buttonValue.equals("Product")) {
+//			List<Product> products = service.getAllProducts();
+//			model.addAttribute("products", products);
+//			return "product";
+//		} else if (buttonValue.equals("Cart")) {
+//			Long userCartId = getUserIdMethod();
+//			List<Order> order = cartService.cartMethod(userCartId);
+//			model.addAttribute("username", getUserName());
+//			model.addAttribute("orders", order);
+//			return "cart";
+//		} else {
+//			return "register";
+//		}
+//	}
 
 	// Gets Product View
 	@GetMapping("/product")
@@ -98,8 +110,29 @@ public class ProductsController {
 		logger.info("Mapping to products");
 		List<Product> products = service.getAllProducts();
 		model.addAttribute("products", products);
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		authentication.getAuthorities().forEach(a -> {
+			role = a.getAuthority();
+		});
+		model.addAttribute("username", authentication.getName());
+		if (role.equalsIgnoreCase("ROLE_ADMIN")) {
+			return "adminProduct";
+		} else if (role.equalsIgnoreCase("ROLE_USER")) {
+			return "productloggeduser";
+		}else {
 		return "product";
 	}
+	}
+	
+	// Gets Product View
+		@GetMapping("/cart")
+		String cart(ModelMap model) {
+			Long userCartId = getUserIdMethod();
+			List<Order> order = cartService.cartMethod(userCartId);
+			model.addAttribute("username", getUserName());
+			model.addAttribute("orders", order);
+			return "cart";
+		}
 
 	// Gets Product View
 	@GetMapping("/logout")
@@ -119,6 +152,11 @@ public class ProductsController {
 			usercheck = userService.findByUserName(currentUserName);
 		}
 		return usercheck.get().getUserId();
+	}
+
+	public String getUserName() {
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		return authentication.getName();
 	}
 
 	@RequestMapping(value = "/login")
@@ -186,12 +224,34 @@ public class ProductsController {
 			model.addAttribute("image", newProductEntity.getBase64image());
 			model.addAttribute("name", newProductEntity.getName());
 			model.addAttribute("price", newProductEntity.getPrice());
+			Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+			authentication.getAuthorities().forEach(a -> {
+				role = a.getAuthority();
+			});
+			model.addAttribute("username", authentication.getName());
+			if (role.equalsIgnoreCase("ROLE_ADMIN")) {
+				return "adminProduct";
+			} else if (role.equalsIgnoreCase("ROLE_USER")) {
+				return "viewDetailloggeduser";
+			}else {
 			return "viewDetail";
+			}
 		} else {
 			List<Product> tasks = service.getAllProducts();
 			model.addAttribute("products", tasks);
 			model.addAttribute("message", "Product Not found! Error!");
+			Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+			authentication.getAuthorities().forEach(a -> {
+				role = a.getAuthority();
+			});
+			model.addAttribute("username", authentication.getName());
+			if (role.equalsIgnoreCase("ROLE_ADMIN")) {
+				return "adminProduct";
+			} else if (role.equalsIgnoreCase("ROLE_USER")) {
+				return "productloggeduser";
+			}else {
 			return "product";
 		}
 	}
+}
 }
