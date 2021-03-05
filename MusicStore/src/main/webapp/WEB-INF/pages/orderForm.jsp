@@ -64,7 +64,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label" for="unitPrice"> Unit Price </label> <input
+                    <label class="control-label" for="unitPrice"> Unit Price in $</label> <input
                         id="unitPrice" class="form-control"
                         th:field="*{unitPrice}" required autofocus="autofocus"/>
                 </div>
@@ -76,7 +76,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label" for="price"> Price </label> <input
+                    <label class="control-label" for="price"> Price in $</label> <input
                         id="price" class="form-control"
                         th:field="*{price}" required autofocus="autofocus"/>
                 </div>

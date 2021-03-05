@@ -105,7 +105,6 @@
                     <th>Country</th>
                     <th>Zip Code</th>
                     <th>Active</th>
-                    <th>Action</th>
                 </tr>
                 <c:forEach var="user" items="${users}">
                     <tr>

@@ -45,6 +45,10 @@
 	<div align="center">
 		${message }
 		<form id="register" action="/registerdone" method="post">
+			<h3>Register Customer</h3>
+			<h5>Please fill in your Information Below!</h5>
+			<br>
+			<h5>Basic Info</h5>
 			<table style="with: 50%">
 				<tr>
 					<td>Name</td>
@@ -66,6 +70,9 @@
 					<td>Phone</td>
 					<td><input type="text" name="phone" required /></td>
 				</tr>
+				</table>
+				<h5>Billing Information</h5>
+				<table style="with: 50%">
 				<tr>
 					<td>Address</td>
 					<td><input type="text" name="address" required /></td>

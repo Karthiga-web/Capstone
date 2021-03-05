@@ -95,12 +95,12 @@
                     <th>User ID</th>
                     <th>Product ID</th>
                     <th>Product Name</th>
-                    <th>Unit Price</th>
+                    <th>Unit Price in $</th>
                     <th>Quantity</th>
-                    <th>Price</th>
+                    <th>Price in $</th>
                     <th>Status</th>
                 </tr>
-                <c:forEach var="order" items="${orders}">
+                <c:forEach var="order" items="${order}">
                     <tr>
                         <td>${order.userId}</td>
                         <td>${order.productId}</td>
@@ -116,14 +116,13 @@
             </table>
         </form>
     </div>
-</div>
 
 <br>
 <br>
 
 <div>
     <footer>
-        <pre><p style="text-align: left;">© 2021 Music.ly Inc</p><a href="#"> Privacy </a><a href="#"> Terms</a></pre>
+        <pre><p style="text-align: left;">Â© 2021 Music.ly Inc</p><a href="#"> Privacy </a><a href="#"> Terms</a></pre>
     </footer>
 </div>
 </body>

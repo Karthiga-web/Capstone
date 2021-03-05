@@ -101,7 +101,7 @@ tr:nth-child(even) {
 						<th>Name</th>
 						<th>Category</th>
 						<th>Condition</th>
-						<th>Price</th>
+						<th>Price in $</th>
 					</tr>
 					<c:forEach var="product" items="${products}">
 						<tr>

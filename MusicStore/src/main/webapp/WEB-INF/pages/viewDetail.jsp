@@ -14,6 +14,12 @@
 .left-align-footer {
 	text-align: right;
 }
+.borderbox{
+border: 1px solid black;
+}
+.detailDiv{
+    background-color: antiquewhite;
+}
 </style>
 </head>
 <body>
@@ -46,12 +52,10 @@
 			</div>
 		</div>
 	</nav>
-	<div align="center">
-		<h5>Product Detail</h5>
-		<br>
-		<p>Here is the detail information of the product!</p>
-		<br>
-		<form id="order" action="/order" method="post">
+	<div  class="detailDiv" align="center">
+		<h3>Product Detail</h3>
+		<h5>Here is the detail information of the product!</h5>
+		<form class="borderbox" id="order" action="/order" method="post">
 			<table style="with: 50%">
 				<tr>
 					<td>Name</td>
@@ -59,8 +63,10 @@
 				</tr>
 				<tr>
 					<td>Category</td>
-					<td><input type="text" name="category" readonly value=${ category}></td>
-					<td><input type="text" name="id" value=${ id} readonly hidden = "true"/></td>
+					<td><input type="text" name="category" readonly
+						value=${ category}></td>
+					<td><input type="text" name="id" value=${ id} readonly
+						hidden="true" /></td>
 				</tr>
 				<tr>
 					<td>Condition</td>
@@ -68,7 +74,7 @@
 						value=${ condition}></td>
 				</tr>
 				<tr>
-					<td>Price</td>
+					<td>Price in $</td>
 					<td><input id="price" name="price" readonly value=${ price}></td>
 				<tr>
 					<td>Image</td>
