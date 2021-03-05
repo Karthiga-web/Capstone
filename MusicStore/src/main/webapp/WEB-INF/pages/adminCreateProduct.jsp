@@ -60,7 +60,7 @@
                 <td><input type="text" name="condition"></td>
             </tr>
             <tr>
-                <td>Price</td>
+                <td>Price in $</td>
                 <td><input id="price" name="price"></td>
             <tr>
                 <td>Image</td>

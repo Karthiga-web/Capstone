@@ -5,13 +5,13 @@
 <html>
 <head>
 <style>
-/* div { */
-/* 	background-color: lightgrey; */
-/* 	width: 300px; */
-/* 	border: 15px solid green; */
-/* 	padding: 50px; */
-/* 	margin: 20px; */
-/* } */
+ .receipt { 
+ 	background-color: lightgrey; 
+	width: 300px; 
+ 	border: 15px solid green; 
+ 	padding: 50px;
+ 	margin: 20px; 
+} 
 </style>
 <meta charset="ISO-8859-1">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
@@ -46,9 +46,9 @@
 			</div>
 		</div>
 	</nav>
-	<h6>Order</h6>
-	<h5>Order Confirmation</h5>
-	<div>
+	<h2  align="center">Order</h2>
+	<h5  align="center">Order Confirmation</h5>
+	<div class="receipt"  align="center">
 		<form id="submitOrder" action="/submitOrder" method="post">
 			<h5>Receipt</h5>
 			<br>
@@ -59,8 +59,8 @@
 				<tr>
 					<th>Product</th>
 					<th>Quantity</th>
-					<th>Price</th>
-					<th>Total</th>
+					<th>Price in $</th>
+					<th>Total in $</th>
 				</tr>
 				<c:forEach var="Order" items="${orders}">
 					<tr>
