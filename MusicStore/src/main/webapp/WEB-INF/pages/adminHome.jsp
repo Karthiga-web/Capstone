@@ -27,12 +27,11 @@
         </div>
         <div  id="navbar" class="collapse navbar-collapse" >
             <ul class="nav navbar-nav" >
-                <li sec:authorize="isAuthenticated()"><a href="/">Home</a></li>
+                <li sec:authorize="isAuthenticated()"><a href="/adminHome">Home</a></li>
                 <li sec:authorize="isAuthenticated()"><a href="/adminProduct">Products</a></li>
                 <li sec:authorize="isAuthenticated()"><a href="/adminCustomerManage">Customers</a></li>
                 <li sec:authorize="isAuthenticated()"><a href="/adminOrders">Orders</a></li>
                 <li sec:authorize="isAuthenticated()"><a href="/logout">Logout</a></li>
-                <li sec:authorize="isAuthenticated()"><a href="/adminHome">Admin</a></li>
             </ul>
         </div>
     </div>
@@ -45,23 +44,23 @@
     This is the administrator page!
 </div>
 <div class="container">
-    <h1>Welcome: admin | <a th:href="@{/logout}">Logout</a></h1>
-    <h2><a th:href="@{/adminProduct}">Product Inventory</a></h2>
+    <h1>Welcome: admin | <a href="/logout">Logout</a></h1>
+    <h2><a href="/adminProduct">Product Inventory</a></h2>
     <p>Here you can View, Check, and Modify the product inventory!</p>
 </div>
 <div class="container">
-    <h2><a th:href="@{/adminCustomerManage}">Customer Management</a></h2>
+    <h2><a href="/adminCustomerManage">Customer Management</a></h2>
     <p>Here you can manage customer information!</p>
 </div>
 <div class="container">
-    <h2><a th:href="@{/adminOrders}">Order Management</a></h2>
+    <h2><a href="/adminOrders">Order Management</a></h2>
     <p>Here you can manage Order status!</p>
 </div>
 <br>
 <br>
 <div>
     <footer>
-        <pre><p style="text-align: left;">© 2021 Music.ly Inc</p><a th:href="@{/logout}"> Privacy </a><a th:href="@{/logout}"> Terms</a></pre>
+        <pre><p style="text-align: left;">© 2021 Music.ly Inc</p><a href="#"> Privacy </a><a href="#"> Terms</a></pre>
     </footer>
 </div>
 </body>

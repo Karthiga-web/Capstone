@@ -65,12 +65,11 @@
         </div>
         <div  id="navbar" class="collapse navbar-collapse" >
             <ul class="nav navbar-nav" >
-                <li sec:authorize="isAuthenticated()"><a href="/">Home</a></li>
+                <li sec:authorize="isAuthenticated()"><a href="/adminHome">Home</a></li>
                 <li sec:authorize="isAuthenticated()"><a href="/adminProduct">Products</a></li>
                 <li sec:authorize="isAuthenticated()"><a href="/adminCustomerManage">Customers</a></li>
-                <li sec:authorize="isAuthenticated()"><a href="/">Welcome admin</a></li>
+                <li sec:authorize="isAuthenticated()"><a href="/adminOrders">Orders</a></li>
                 <li sec:authorize="isAuthenticated()"><a href="/logout">Logout</a></li>
-                <li sec:authorize="isAuthenticated()"><a href="/adminHome">Admin</a></li>
             </ul>
         </div>
     </div>
@@ -122,7 +121,7 @@
 
     <div>
         <footer>
-            <pre><p style="text-align: left;">© 2021 Music.ly Inc</p><a th:href="@{/logout}"> Privacy </a><a th:href="@{/logout}"> Terms</a></pre>
+            <pre><p style="text-align: left;">© 2021 Music.ly Inc</p><a href="#"> Privacy </a><a href="#"> Terms</a></pre>
         </footer>
     </div>
 </body>

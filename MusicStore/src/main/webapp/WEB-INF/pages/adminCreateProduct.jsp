@@ -29,20 +29,13 @@
                 aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <!-- Home tab -->
-                <li class="nav-item"><a class="nav-link active"
-                                        aria-current="page" href="/" name="target-top-home">Home</a></li>
-                <!-- Products -->
-                <li class="nav-item"><a class="nav-link " href="/product">Products</a>
-                </li>
-                <!-- Login -->
-                <li class="nav-item"><a class="nav-link" href="/login">Login</a>
-                </li>
-                <!-- Register -->
-                <li class="nav-item"><a class="nav-link" href="/register">Register</a>
-                </li>
+        <div  id="navbar" class="collapse navbar-collapse" >
+            <ul class="nav navbar-nav" >
+                <li sec:authorize="isAuthenticated()"><a href="/adminHome">Home</a></li>
+                <li sec:authorize="isAuthenticated()"><a href="/adminProduct">Products</a></li>
+                <li sec:authorize="isAuthenticated()"><a href="/adminCustomerManage">Customers</a></li>
+                <li sec:authorize="isAuthenticated()"><a href="/adminOrders">Orders</a></li>
+                <li sec:authorize="isAuthenticated()"><a href="/logout">Logout</a></li>
             </ul>
         </div>
     </div>
