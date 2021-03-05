@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import com.hcl.entity.Order;
+import com.hcl.entity.Product;
 
 public interface OrderService {
 
@@ -16,5 +17,9 @@ public interface OrderService {
 	void changeStatus(Long userId);
 
 	void clearCart(Long userId);
+
+	void deleteOrderById(Long id);
+
+	void saveOrder(Order order);
 
 }

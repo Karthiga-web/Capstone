@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+         pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -35,35 +38,53 @@
 
             <!-- success message -->
             <div th:if="${param.success}">
-                <div class="alert alert-info">Product Updated!</div>
+                <div class="alert alert-info">Order Updated!</div>
             </div>
 
-            <h1>Update Product</h1>
+            <h1>Update Order</h1>
 
-            <form th:action="@{/productForm}" method="post" th:object="${product}">
+            <form th:action="@{/orderForm}" method="post" th:object="${order}">
                 <input type="hidden" th:field="*{id}" />
                 <div class="form-group">
-                    <label class="control-label" for="name"> Product name </label>
-                    <input id="name" class="form-control" th:field="*{name}"
+                    <label class="control-label" for="userId"> User Id </label>
+                    <input id="userId" class="form-control" th:field="*{userId}"
                            required autofocus="autofocus"/>
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label" for="category"> Category </label> <input
-                        id="category" class="form-control" th:field="*{category}"
+                    <label class="control-label" for="productId"> Product Id </label> <input
+                        id="productId" class="form-control" th:field="*{productId}"
                         required autofocus="autofocus"/>
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label" for="price"> Price </label> <input
-                        id="price" class="form-control" th:field="*{price}" required
+                    <label class="control-label" for="productName"> Product Name </label> <input
+                        id="productName" class="form-control" th:field="*{productName}" required
                         autofocus="autofocus"/>
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label" for="condition"> Condition </label> <input
-                        id="condition" class="form-control"
-                        th:field="*{condition}" required autofocus="autofocus"/>
+                    <label class="control-label" for="unitPrice"> Unit Price </label> <input
+                        id="unitPrice" class="form-control"
+                        th:field="*{unitPrice}" required autofocus="autofocus"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label" for="quantity"> Quantity </label> <input
+                        id="quantity" class="form-control"
+                        th:field="*{quantity}" required autofocus="autofocus"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label" for="price"> Price </label> <input
+                        id="price" class="form-control"
+                        th:field="*{price}" required autofocus="autofocus"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label" for="status"> Status </label> <input
+                        id="status" class="form-control"
+                        th:field="*{status}" required autofocus="autofocus"/>
                 </div>
 
                 <div class="form-group">

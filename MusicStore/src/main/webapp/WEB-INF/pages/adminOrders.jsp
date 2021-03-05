@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+         pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">>
@@ -62,12 +65,12 @@
         </div>
         <div  id="navbar" class="collapse navbar-collapse" >
             <ul class="nav navbar-nav" >
-                <li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">Home</a></li>
-                <li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">Products</a></li>
-                <li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">About</a></li>
-                <li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">Welcome admin</a></li>
-                <li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">Logout</a></li>
-                <li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">Admin</a></li>
+                <li sec:authorize="isAuthenticated()"><a href="/">Home</a></li>
+                <li sec:authorize="isAuthenticated()"><a href="/adminProduct">Products</a></li>
+                <li sec:authorize="isAuthenticated()"><a href="/adminCustomerManage">Customers</a></li>
+                <li sec:authorize="isAuthenticated()"><a href="/">Welcome admin</a></li>
+                <li sec:authorize="isAuthenticated()"><a href="/logout">Logout</a></li>
+                <li sec:authorize="isAuthenticated()"><a href="/adminHome">Admin</a></li>
             </ul>
         </div>
     </div>
@@ -79,58 +82,48 @@
 <br>
 
 <div>
-    <h1>Customer Management Page</h1>
-    <p>This is the customer management Page!</p>
+    <h1>Order Management Page</h1>
+    <p>This is where the admin can view current orders!</p>
 </div>
 
 <br>
 
 <div align="center">
     <div class="panel-body">
-    <form id="product" action="/viewdetail" method="post">
-        <table>
-            <tr>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>username</th>
-                <th>Email</th>
-                <th>Password</th>
-                <th>Phone Number</th>
-                <th>Address</th>
-                <th>Apartment Number</th>
-                <th>City</th>
-                <th>State</th>
-                <th>Zip Code</th>
-                <th>Active</th>
-            </tr>
-            <c:forEach var="product" items="${user}">
+        <form id="product" action="/adminOrders" method="post">
+            <table>
                 <tr>
-                    <td>${user.firstname}</td>
-                    <td>${user.lastname}</td>
-                    <td>${user.username}</td>
-                    <td>${user.email}</td>
-                    <td>${user.password}</td>
-                    <td>${user.phoneNumber}</td>
-                    <td>${user.address}</td>
-                    <td>${user.apartmentNumber}</td>
-                    <td>${user.city}</td>
-                    <td>${user.state}</td>
-                    <td>${user.zipcode}</td>
-                    <td>${user.active}</td>
-                    <td><a href="delete/${user.id}">Delete</a></td>
+                    <th>User ID</th>
+                    <th>Product ID</th>
+                    <th>Product Name</th>
+                    <th>Unit Price</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Status</th>
                 </tr>
-            </c:forEach>
-        </table>
+                <c:forEach var="order" items="${order}">
+                    <tr>
+                        <td>${order.userId}</td>
+                        <td>${order.productId}</td>
+                        <td>${order.productName}</td>
+                        <td>${order.unitPrice}</td>
+                        <td>${order.quantity}</td>
+                        <td>${order.price}</td>
+                        <td>${order.status}</td>
+                        <td><a type="button" class="btn btn-success" href="/admin-updateOrder/{order.id}">Update</a></td>
+                    </tr>
+                </c:forEach>
+            </table>
         </form>
-</div>
+    </div>
 
     <br>
     <br>
 
-<div>
-    <footer>
-        <pre><p style="text-align: left;">© 2021 Music.ly Inc</p><a th:href="@{/logout}"> Privacy </a><a th:href="@{/logout}"> Terms</a></pre>
-    </footer>
-</div>
+    <div>
+        <footer>
+            <pre><p style="text-align: left;">© 2021 Music.ly Inc</p><a th:href="@{/logout}"> Privacy </a><a th:href="@{/logout}"> Terms</a></pre>
+        </footer>
+    </div>
 </body>
 </html>

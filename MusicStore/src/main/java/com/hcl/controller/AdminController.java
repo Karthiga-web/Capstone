@@ -1,6 +1,8 @@
 package com.hcl.controller;
 
+import com.hcl.entity.Order;
 import com.hcl.entity.User;
+import com.hcl.service.OrderService;
 import com.hcl.service.ProductService;
 import com.hcl.entity.Product;
 
@@ -25,6 +27,9 @@ public class AdminController {
 
     @Autowired
     UserService userService;
+
+    @Autowired
+    OrderService orderService;
 
     @GetMapping("/adminCreateProduct")
     String getCreateProductView(ModelMap model) {
@@ -88,10 +93,10 @@ public class AdminController {
     public String updateProduct(@ModelAttribute("product") Product product, ModelMap modelMap) {
         String added = saveProductMethod(product);
         if(added.equals("Saved")) {
-            modelMap.addAttribute("message", "Product added!");
+            modelMap.addAttribute("message", "Product updated!");
             return "/adminProduct";
         }else {
-            modelMap.addAttribute("message", "Unable to add product");
+            modelMap.addAttribute("message", "Unable to update product");
             return "/productForm";
         }
     }
@@ -117,6 +122,15 @@ public class AdminController {
     public String saveProductMethod(Product product) {
         try {
             productService.saveProduct(product);
+            return "Saved";
+        } catch (Exception e) {
+            return "Error";
+        }
+    }
+
+    public String saveOrderMethod(Order order) {
+        try {
+            orderService.saveOrder(order);
             return "Saved";
         } catch (Exception e) {
             return "Error";
@@ -149,6 +163,24 @@ public class AdminController {
         List<User> users = userService.findAllUsers();
         modelMap.addAttribute("users", users);
         return "adminCustomerManage";
+    }
+
+    @GetMapping("/admin-updateOrder/{id}")
+    public String updateOrder(@PathVariable String id, Model model){
+        model.addAttribute("order", orderService.findOrderById(Long.valueOf(id)));
+        return "orderForm";
+    }
+
+    @PostMapping("/orderFormDone")
+    public String updateOrder(@ModelAttribute("order") Order order, ModelMap modelMap) {
+        String added = saveOrderMethod(order);
+        if(added.equals("Saved")) {
+            modelMap.addAttribute("message", "Order updated!");
+            return "/adminOrders";
+        }else {
+            modelMap.addAttribute("message", "Unable to update product");
+            return "/orderForm";
+        }
     }
 
 

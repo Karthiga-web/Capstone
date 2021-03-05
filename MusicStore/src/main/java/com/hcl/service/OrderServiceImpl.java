@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import com.hcl.entity.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -58,6 +59,16 @@ public class OrderServiceImpl implements OrderService{
 				repo.deleteById(a.getId());
 			}
 		});
+	}
+
+	@Override
+	public void saveOrder(Order order){
+		this.repo.save(order);
+	}
+
+	@Override
+	public void deleteOrderById(Long id) {
+		repo.deleteById(id);
 	}
 
 }
