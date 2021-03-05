@@ -10,7 +10,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -24,6 +26,32 @@ public class AdminController {
     @Autowired
     UserService userService;
 
+    @GetMapping("/adminCreateProduct")
+    String getCreateProductView(ModelMap model) {
+        return "adminCreateProduct";
+    }
+
+    @PostMapping("/admin-new")
+    public String newProductForm(@ModelAttribute("product") Product product1,
+    		@RequestParam("image345") MultipartFile multipartFile,
+                                 ModelMap modelMap
+    ) throws IOException {
+        Optional<Product> productCheck = productService.findProductByName(product1.getName());
+        if (productCheck.isPresent()) {
+            modelMap.addAttribute("message", "Product Already Exists!Try a different one!");
+            return "/admin-new";
+        } else {
+        	product1.setCategory(product1.getCategory());
+        	product1.setCondition(product1.getCondition());
+        	product1.setPrice(product1.getPrice());
+        	product1.setName(product1.getName());
+            product1.setImage(multipartFile.getBytes());
+            productService.saveProduct(product1);
+            List<Product> products = productService.getAllProducts();
+            modelMap.addAttribute("products", products);
+            return "/adminProduct";
+        }
+    }
 
     // PRODUCT MAPPING
     public void ProductsController(ProductService productService) {
