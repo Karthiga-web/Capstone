@@ -71,9 +71,17 @@ public class AdminController {
     }
 
     @GetMapping("admin-delete/{id}")
-    public String deleteById(@PathVariable String id){
+    public String deleteById(@PathVariable String id, Model model){
+    	List<Product> products = productService.getAllProducts();
+        model.addAttribute("products", products);
         productService.deleteById(Long.valueOf(id));
         return "adminProduct";
+    }
+    
+    @GetMapping("delete-user/{id}")
+    public String deleteUserById(@PathVariable String id){
+        userService.deleteUserById(Long.valueOf(id));
+        return "adminCustomerManage";
     }
 
     @PostMapping("/admin-save")
@@ -155,16 +163,6 @@ public class AdminController {
         return "adminCustomerManage";
     }
 
-
-/*
-    @GetMapping("/delete-user/{userId}")
-    public String deleteUserById(@PathVariable String userId, ModelMap modelMap) {
-        userService.deleteUserById(Long.parseLong(userId));
-        List<User> users = userService.findAllUsers();
-        modelMap.addAttribute("users", users);
-        return "adminCustomerManage";
-    }
-*/
     @GetMapping("/admin-updateOrder/{id}")
     public String updateOrder(@PathVariable String id, Model model){
         model.addAttribute("order", orderService.findOrderById(Long.valueOf(id)));
