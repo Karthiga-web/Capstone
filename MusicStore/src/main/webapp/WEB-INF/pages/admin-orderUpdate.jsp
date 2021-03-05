@@ -91,17 +91,17 @@
         <form id="newOrder" action="/admin-orderUpdate" method="post" enctype="multipart/form-data">
             <input type="hidden" name="id" value="${current.id}" readonly />        <!--Hidden ID -->
             <label>User Id</label>
-            <input type="text" name="userId" value="${current.userId}"/>                <!--Product Name-->
+            <input type="text" name="userId" value="${current.userId}" readonly/>                <!--Product Name-->
             <label>Product Id</label>
-            <input type="text" name="productId" value="${current.productId}" />       <!--Product Category-->
+            <input type="text" name="productId" value="${current.productId}" readonly/>       <!--Product Category-->
             <label>Product Name</label>
-            <input type="text" name="productName" value="${current.productName}" />     <!--Product Condition-->
+            <input type="text" name="productName" value="${current.productName}" readonly/>     <!--Product Condition-->
             <label>Unit Price</label>
-            <input type="text" name="unitPrice" value="${current.unitPrice}" />  <!--Product Price-->
+            <input type="text" name="unitPrice" value="${current.unitPrice}" readonly/>  <!--Product Price-->
             <label>Quantity</label>
-            <input type="text" name="quantity" value="${current.quantity}" /> 
+            <input type="text" name="quantity" value="${current.quantity}" readonly/>
             <label>Price</label>
-            <input type="text" name="price" value="${current.price}" /> 
+            <input type="text" name="price" value="${current.price}" readonly/>
             <label>Status</label>
             <input type="text" name="status" value="${current.status}" />            
             

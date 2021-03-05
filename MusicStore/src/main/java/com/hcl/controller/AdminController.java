@@ -198,11 +198,11 @@ public class AdminController {
         return "adminCustomerManage";
     }
 
-    @GetMapping("/admin-updateOrder/{id}")
-    public String updateOrder(@PathVariable String id, Model model){
-        model.addAttribute("order", orderService.findOrderById(Long.valueOf(id)));
-        return "orderForm";
-    }
+//    @GetMapping("/admin-updateOrder/{id}")
+//    public String updateOrder(@PathVariable String id, Model model){
+//        model.addAttribute("order", orderService.findOrderById(Long.valueOf(id)));
+//        return "orderForm";
+//    }
 
     @PostMapping("/orderFormDone")
     public String updateOrder(@ModelAttribute("order") Order order, ModelMap modelMap) {
