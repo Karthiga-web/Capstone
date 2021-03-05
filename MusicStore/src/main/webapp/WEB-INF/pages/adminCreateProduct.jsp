@@ -71,7 +71,7 @@
                 <td><input id="price" name="price"></td>
             <tr>
                 <td>Image</td>
-                <td><input type="file" accept="image/jpg" name="image" id="image"/></td>
+                <td><input type="file" accept="image/jpg" name="image345" id="image345"/></td>
             </tr>
         </table>
         <input type="submit" name="button" value="Submit"/>
