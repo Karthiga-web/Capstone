@@ -10,8 +10,8 @@
 <body>
 	<div align="center">
 		${message }
-		<form id="login" action="/success" method="post">
-			<input type="submit" name = "button" value="Product"/>
+		<form id="success" action="/success" method="post">
+			<input type="submit" name = "button" value="Home"/>
 		</form>
 	</div>
 </body>
