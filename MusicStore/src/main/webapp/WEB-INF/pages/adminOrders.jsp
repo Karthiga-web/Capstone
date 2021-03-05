@@ -100,7 +100,7 @@
                     <th>Price</th>
                     <th>Status</th>
                 </tr>
-                <c:forEach var="order" items="${order}">
+                <c:forEach var="order" items="${orders}">
                     <tr>
                         <td>${order.userId}</td>
                         <td>${order.productId}</td>
@@ -109,20 +109,22 @@
                         <td>${order.quantity}</td>
                         <td>${order.price}</td>
                         <td>${order.status}</td>
-                        <td><a type="button" class="btn btn-success" href="/admin-updateOrder/{order.id}">Update</a></td>
+                        <td><a type="button" class="btn btn-success"
+                               href="/admin-updateOrder/{order.id}">Update</a></td>
                     </tr>
                 </c:forEach>
             </table>
         </form>
     </div>
+</div>
 
-    <br>
-    <br>
+<br>
+<br>
 
-    <div>
-        <footer>
-            <pre><p style="text-align: left;">© 2021 Music.ly Inc</p><a href="#"> Privacy </a><a href="#"> Terms</a></pre>
-        </footer>
-    </div>
+<div>
+    <footer>
+        <pre><p style="text-align: left;">© 2021 Music.ly Inc</p><a href="#"> Privacy </a><a href="#"> Terms</a></pre>
+    </footer>
+</div>
 </body>
 </html>

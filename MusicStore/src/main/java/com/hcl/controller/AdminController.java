@@ -93,6 +93,25 @@ public class AdminController {
         productService.deleteById(Long.valueOf(id));
         return "adminProduct";
     }
+
+    @GetMapping("/admin-orderUpdate/{id}")
+    public String updateOrder(@PathVariable String id, ModelMap modelMap){
+        modelMap.addAttribute("current", orderService.getOrderById(Long.valueOf(id)));
+        return "admin-orderUpdate";
+    }
+
+    @PostMapping("/admin-orderUpdate")
+    public String submitUpdate(@ModelAttribute("newOrder") Order newOrder) throws IOException {
+        newOrder.setUserId(newOrder.getUserId());
+        newOrder.setProductId(newOrder.getProductId());
+        newOrder.setProductName(newOrder.getProductName());
+        newOrder.setUnitPrice(newOrder.getUnitPrice());
+        newOrder.setQuantity(newOrder.getQuantity());
+        newOrder.setStatus(newOrder.getStatus());
+        orderService.saveOrder(newOrder);
+
+        return "adminHome";
+    }
     
 //    @GetMapping("delete-user/{id}")
 //    public String deleteUserById(@PathVariable String id){
