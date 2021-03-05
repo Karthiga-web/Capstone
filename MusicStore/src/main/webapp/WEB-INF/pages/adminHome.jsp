@@ -53,6 +53,10 @@
     <h2><a th:href="@{/adminCustomerManage}">Customer Management</a></h2>
     <p>Here you can manage customer information!</p>
 </div>
+<div class="container">
+    <h2><a th:href="@{/adminOrders}">Order Management</a></h2>
+    <p>Here you can manage Order status!</p>
+</div>
 <br>
 <br>
 <div>
