@@ -30,7 +30,7 @@
                 <li sec:authorize="isAuthenticated()"><a href="/">Home</a></li>
                 <li sec:authorize="isAuthenticated()"><a href="/adminProduct">Products</a></li>
                 <li sec:authorize="isAuthenticated()"><a href="/adminCustomerManage">Customers</a></li>
-                <li sec:authorize="isAuthenticated()"><a href="/">Welcome admin</a></li>
+                <li sec:authorize="isAuthenticated()"><a href="/adminOrders">Orders</a></li>
                 <li sec:authorize="isAuthenticated()"><a href="/logout">Logout</a></li>
                 <li sec:authorize="isAuthenticated()"><a href="/adminHome">Admin</a></li>
             </ul>

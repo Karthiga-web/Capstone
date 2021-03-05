@@ -156,7 +156,7 @@ public class AdminController {
     }
 
 
-
+/*
     @GetMapping("/delete-user/{userId}")
     public String deleteUserById(@PathVariable String userId, ModelMap modelMap) {
         userService.deleteUserById(Long.parseLong(userId));
@@ -164,7 +164,7 @@ public class AdminController {
         modelMap.addAttribute("users", users);
         return "adminCustomerManage";
     }
-
+*/
     @GetMapping("/admin-updateOrder/{id}")
     public String updateOrder(@PathVariable String id, Model model){
         model.addAttribute("order", orderService.findOrderById(Long.valueOf(id)));
