@@ -39,7 +39,7 @@ public class OrderController {
 	@Autowired
 	OrderService orderService;
 	long total = 0;
-	Logger logger = LoggerFactory.getLogger(ProductsController.class);
+	Logger logger = LoggerFactory.getLogger(OrderController.class);
 
 	String role;
 

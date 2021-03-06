@@ -1,6 +1,3 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-pageEncoding="ISO-8859-1"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">>
@@ -65,12 +62,11 @@ pageEncoding="ISO-8859-1"%>
     </div>
     <div  id="navbar" class="collapse navbar-collapse" >
       <ul class="nav navbar-nav" >
-        <li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">Home</a></li>
-        <li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">Products</a></li>
-        <li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">About</a></li>
-        <li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">Welcome admin</a></li>
-        <li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">Logout</a></li>
-        <li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">Admin</a></li>
+        <li sec:authorize="isAuthenticated()"><a href="/adminHome">Home</a></li>
+        <li sec:authorize="isAuthenticated()"><a href="/adminProduct">Products</a></li>
+        <li sec:authorize="isAuthenticated()"><a href="/adminCustomerManage">Customers</a></li>
+        <li sec:authorize="isAuthenticated()"><a href="/adminOrders">Orders</a></li>
+        <li sec:authorize="isAuthenticated()"><a href="/logout">Logout</a></li>
       </ul>
     </div>
   </div>
@@ -101,7 +97,7 @@ pageEncoding="ISO-8859-1"%>
           <th>Price</th>
           <th>Status</th>
         </tr>
-        <c:forEach var="order" items="${order}">
+        <c:forEach var="order" items="${orders}">
           <tr>
             <td>${order.userId}</td>
             <td>${order.productId}</td>
@@ -110,20 +106,22 @@ pageEncoding="ISO-8859-1"%>
             <td>${order.quantity}</td>
             <td>${order.price}</td>
             <td>${order.status}</td>
-            <td><a type="button" class="btn btn-success" href="/admin-updateOrder/{order.id}">Update</a></td>
+            <td><a type="button" class="btn btn-success"
+                   href="/admin-updateOrder/{order.id}">Update</a></td>
           </tr>
         </c:forEach>
       </table>
     </form>
   </div>
+</div>
 
-  <br>
-  <br>
+<br>
+<br>
 
-  <div>
-    <footer>
-      <pre><p style="text-align: left;">Â© 2021 Music.ly Inc</p><a th:href="@{/logout}"> Privacy </a><a th:href="@{/logout}"> Terms</a></pre>
-    </footer>
-  </div>
+<div>
+  <footer>
+    <pre><p style="text-align: left;">© 2021 Music.ly Inc</p><a href="#"> Privacy </a><a href="#"> Terms</a></pre>
+  </footer>
+</div>
 </body>
 </html>

@@ -13,7 +13,7 @@ public interface OrderService {
 	void deleteOrder(Order newProductEntity);
 	
 	Order getOrderById(Long id);
-	
+
 	List<Order> getAllOrders();
 
 	List<Order> getAllOrders(Long long1);

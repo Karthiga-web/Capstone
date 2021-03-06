@@ -110,21 +110,22 @@
                         <td>${order.price}</td>
                         <td>${order.status}</td>
                         <td><a type="button" class="btn btn-success"
-                         href="/admin-updateOrder/${order.id}">Update</a></td>
+                         href="/admin-orderUpdate/${order.id}">Update</a></td>
                     </tr>
                 </c:forEach>
             </table>
         </form>
     </div>
-    </div>
+    </div> 
 
-    <br>
-    <br>
 
-    <div>
-        <footer>
-            <pre><p style="text-align: left;">© 2021 Music.ly Inc</p><a href="#"> Privacy </a><a href="#"> Terms</a></pre>
-        </footer>
-    </div>
+<br>
+<br>
+
+<div>
+    <footer>
+        <pre><p style="text-align: left;">© 2021 Music.ly Inc</p><a href="#"> Privacy </a><a href="#"> Terms</a></pre>
+    </footer>
+</div>
 </body>
 </html>
