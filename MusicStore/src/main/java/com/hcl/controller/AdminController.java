@@ -33,6 +33,11 @@ public class AdminController {
     @Autowired
     OrderService orderService;
 
+    @GetMapping("/adminHome")
+    public String showAdminHomePage(ModelMap modelMap) {
+        return "adminHome";
+    }
+
     @GetMapping("/adminCreateProduct")
     String getCreateProductView(ModelMap model) {
         return "adminCreateProduct";
@@ -88,9 +93,9 @@ public class AdminController {
 
     @GetMapping("admin-delete/{id}")
     public String deleteById(@PathVariable String id, Model model){
-    	List<Product> products = productService.getAllProducts();
-        model.addAttribute("products", products);
         productService.deleteById(Long.valueOf(id));
+        List<Product> products = productService.getAllProducts();
+        model.addAttribute("products", products);
         return "adminProduct";
     }
 
@@ -198,11 +203,11 @@ public class AdminController {
         return "adminCustomerManage";
     }
 
-//    @GetMapping("/admin-updateOrder/{id}")
-//    public String updateOrder(@PathVariable String id, Model model){
-//        model.addAttribute("order", orderService.findOrderById(Long.valueOf(id)));
-//        return "orderForm";
-//    }
+    @GetMapping("/admin-updateOrder/{id}")
+    public String updateOrder(@PathVariable String id, Model model){
+        model.addAttribute("order", orderService.findOrderById(Long.valueOf(id)));
+        return "orderForm";
+    }
 
     @PostMapping("/orderFormDone")
     public String updateOrder(@ModelAttribute("order") Order order, ModelMap modelMap) {
@@ -216,6 +221,12 @@ public class AdminController {
         }
     }
 
+    @GetMapping("/adminOrders")
+    public String showAdminOrdersPage(ModelMap modelMap) {
+        List<Order> orders = orderService.getAllOrders();
+        modelMap.addAttribute("orders", orders);
+        return "adminOrders";
+    }
 
 
 

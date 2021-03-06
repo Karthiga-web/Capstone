@@ -15,7 +15,7 @@
           crossorigin="anonymous">
 
     <meta charset="ISO-8859-1">
-    <title>View Tasks</title>
+    <title>Customer Management</title>
     <style>
         #ex_table {
             table-layout: fixed !important;
@@ -40,11 +40,34 @@
         td, th {
             border: 1px solid #dddddd;
             text-align: left;
-            vertical-align: bottom;
+            vertical-align: center;
             padding: 8px;
         }
         tr:nth-child(even) {
             background-color: #dddddd;
+        }
+
+        .container {
+            width:90%;
+            height:80%;
+            margin:0 auto;
+            padding:10% 0;
+            align-content:center;
+            text-align:center;
+        }
+
+        table {
+            margin:0 auto;
+        }
+
+        input {
+            padding:5px;
+            margin:8px auto;
+        }
+
+        button {
+            padding:5px 10px;
+            margin:8px;
         }
     </style>
 </head>
@@ -52,7 +75,7 @@
 
 <!-- create navigation bar ( header) -->
 <nav class="navbar navbar-inverse navbar-fixed-top" >
-    <div class="container">
+    <div class="nav-container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed"
                     data-toggle="collapse" data-target="#navbar" aria-expanded="false"
@@ -75,20 +98,10 @@
     </div>
 </nav>
 
-<br>
-<br>
-<br>
-<br>
 
-<div>
-    <h1>Customer Management Page</h1>
-    <p>This is the customer management Page!</p>
-</div>
-
-<br>
-
-<div align="center">
+<div class="container" align="center">
     <div class="panel-body">
+        <h1>Customers</h1>
         <form id="user" action="/delete-user" method="post">
             <table>
                 <tr>
@@ -126,15 +139,13 @@
             </table>
         </form>
     </div>
-
-    <br>
-    <br>
-
-    <div>
-        <footer>
-            <pre><p style="text-align: left;">© 2021 Music.ly Inc</p><a href="#"> Privacy </a><a href="#"> Terms</a></pre>
-        </footer>
-    </div>
 </div>
+
+<div>
+    <footer>
+        <pre><p style="text-align: left;">© 2021 Music.ly Inc</p><a href="#"> Privacy </a><a href="#"> Terms</a></pre>
+    </footer>
+</div>
+
 </body>
 </html>

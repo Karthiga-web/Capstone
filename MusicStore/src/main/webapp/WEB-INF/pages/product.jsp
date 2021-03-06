@@ -10,7 +10,7 @@
 	rel="stylesheet"
 	integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
 	crossorigin="anonymous">
-<title>View Tasks</title>
+<title>Product</title>
 <style>
 #ex_table {
 	table-layout: fixed !important;

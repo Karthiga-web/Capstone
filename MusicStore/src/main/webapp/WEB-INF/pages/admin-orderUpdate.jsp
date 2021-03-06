@@ -6,7 +6,7 @@
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
     <meta charset="ISO-8859-1">
-    <title>View Tasks</title>
+    <title>Orders</title>
 
     <link rel="stylesheet"
           href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -91,17 +91,17 @@
         <form id="newOrder" action="/admin-orderUpdate" method="post" enctype="multipart/form-data">
             <input type="hidden" name="id" value="${current.id}" readonly />        <!--Hidden ID -->
             <label>User Id</label>
-            <input type="text" name="userId" value="${current.userId}" readonly/>                <!--Product Name-->
+            <input type="text" name="userId" value="${current.userId}"/>                <!--Product Name-->
             <label>Product Id</label>
-            <input type="text" name="productId" value="${current.productId}" readonly/>       <!--Product Category-->
+            <input type="text" name="productId" value="${current.productId}" />       <!--Product Category-->
             <label>Product Name</label>
-            <input type="text" name="productName" value="${current.productName}" readonly/>     <!--Product Condition-->
+            <input type="text" name="productName" value="${current.productName}" />     <!--Product Condition-->
             <label>Unit Price</label>
-            <input type="text" name="unitPrice" value="${current.unitPrice}" readonly/>  <!--Product Price-->
+            <input type="text" name="unitPrice" value="${current.unitPrice}" />  <!--Product Price-->
             <label>Quantity</label>
-            <input type="text" name="quantity" value="${current.quantity}" readonly/>
+            <input type="text" name="quantity" value="${current.quantity}" /> 
             <label>Price</label>
-            <input type="text" name="price" value="${current.price}" readonly/>
+            <input type="text" name="price" value="${current.price}" /> 
             <label>Status</label>
             <input type="text" name="status" value="${current.status}" />            
             

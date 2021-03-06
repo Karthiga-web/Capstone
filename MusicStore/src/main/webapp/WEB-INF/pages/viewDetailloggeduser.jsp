@@ -10,7 +10,7 @@
 	rel="stylesheet"
 	integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
 	crossorigin="anonymous">
-<title>View Details Of Product</title>
+<title>Product Details</title>
 <style>
 .left-align-footer {
 	text-align: right;

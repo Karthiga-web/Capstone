@@ -6,7 +6,7 @@
 	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
 <meta charset="ISO-8859-1">
-<title>View Tasks</title>
+<title>Product Inventory</title>
 
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -43,12 +43,34 @@ table {
 td, th {
 	border: 1px solid #dddddd;
 	text-align: left;
-	vertical-align: bottom;
+	vertical-align: center;
 	padding: 8px;
 }
 
 tr:nth-child(even) {
 	background-color: #dddddd;
+}
+.container {
+	width:90%;
+	height:80%;
+	margin:0 auto;
+	padding:10% 0;
+	align-content:center;
+	text-align:center;
+}
+
+table {
+	margin:0 auto;
+}
+
+input {
+	padding:5px;
+	margin:8px auto;
+}
+
+button {
+	padding:5px 10px;
+	margin:8px;
 }
 </style>
 </head>
@@ -56,7 +78,7 @@ tr:nth-child(even) {
 
 	<!-- create navigation bar ( header) -->
 	<nav class="navbar navbar-inverse navbar-fixed-top">
-		<div class="container">
+		<div class="nav-container">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle collapsed"
 					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
@@ -79,20 +101,10 @@ tr:nth-child(even) {
 		</div>
 	</nav>
 
-	<br>
-	<br>
-	<br>
-	<br>
 
-	<div>
+
+	<div class="container" align="center">
 		<h1>Product Inventory Page</h1>
-		<p>This is the product inventory Page!</p>
-	</div>
-
-	<br>
-	<br>
-
-	<div align="center">
 		<div class="panel-body">
 			<form id="product" action="/viewDetail" method="post">
 				<table>
@@ -102,6 +114,8 @@ tr:nth-child(even) {
 						<th>Category</th>
 						<th>Condition</th>
 						<th>Price in $</th>
+						<th  style="text-align: center;">Delete</th>
+						<th  style="text-align: center;">Update</th>
 					</tr>
 					<c:forEach var="product" items="${products}">
 						<tr>
@@ -111,9 +125,9 @@ tr:nth-child(even) {
 							<td>${product.category}</td>
 							<td>${product.condition}</td>
 							<td>${product.price}</td>
-							<td><a type="button" class="btn btn-success"
+							<td style="text-align: center;"><a type="button" class="btn btn-danger"
 								href="/admin-delete/${product.id}">Delete</a></td>
-							<td><a type="button" class="btn btn-success"
+							<td style="text-align: center;"><a type="button" class="btn btn-success"
 								href="/admin-update/${product.id}">Update</a></td>
 						</tr>
 					</c:forEach>

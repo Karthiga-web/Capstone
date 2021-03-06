@@ -11,7 +11,7 @@
     padding-top: 50%;
 }
 </style>
-<title>Login Here!</title>
+<title>Success!</title>
 </head>
 <body>
 	<!-- Navbar -->
