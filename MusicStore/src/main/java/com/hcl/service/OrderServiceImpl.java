@@ -25,12 +25,12 @@ public class OrderServiceImpl implements OrderService{
 	public void deleteOrder(Order newProductEntity) {
 		repo.delete(newProductEntity);
 	}
-	
+
 	@Override
 	public List<Order> getAllOrders() {
 		return repo.findAll();
 	}
-	
+
 	@Override
 	public Order getOrderById(Long id) {
 		return repo.findById(id).get();

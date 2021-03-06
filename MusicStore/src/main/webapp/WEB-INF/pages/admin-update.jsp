@@ -19,16 +19,9 @@
         table-layout: fixed !important;
     }
 
-
     #ex_table thead tr {
         width: 500px !important;
         position: fixed !important;
-    }
-    #ex_table tbody tr {
-        width: 500px !important;
-    }
-    #ex_table th, td {
-        width: 100px;
     }
 
     #ex_table tbody tr {
@@ -105,17 +98,6 @@
     </div>
 </nav>
 
-<<<<<<< HEAD
-<br>
-<br>
-<br>
-<br>
-
-
-<br>
-<br>
-=======
->>>>>>> 3058b6df22039dbe225ef29325efcc1a432489f6
 
 <div class="container" align="center">
     <div class="panel-body">

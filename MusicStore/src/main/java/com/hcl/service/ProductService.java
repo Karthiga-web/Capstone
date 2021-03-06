@@ -3,7 +3,6 @@ package com.hcl.service;
 import java.util.List;
 import java.util.Optional;
 
-import com.hcl.entity.Order;
 import com.hcl.entity.Product;
 
 public interface ProductService {
@@ -11,7 +10,7 @@ public interface ProductService {
 	List<Product> getAllProducts();
 
 	Optional<Product> findProductById(long productId);
-	
+
 	Product getProductById(Long id);
 
 	void saveToCart(Long id, Long userId);

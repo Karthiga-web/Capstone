@@ -2,16 +2,12 @@ package com.hcl.controller;
 
 import com.hcl.entity.Order;
 import com.hcl.entity.User;
-import com.hcl.entity.Role;
 import com.hcl.service.OrderService;
 import com.hcl.service.ProductService;
 import com.hcl.entity.Product;
 
 import com.hcl.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.AnonymousAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -37,16 +33,11 @@ public class AdminController {
     @Autowired
     OrderService orderService;
 
-<<<<<<< HEAD
-    String role;
-    
-=======
     @GetMapping("/adminHome")
     public String showAdminHomePage(ModelMap modelMap) {
         return "adminHome";
     }
 
->>>>>>> 3058b6df22039dbe225ef29325efcc1a432489f6
     @GetMapping("/adminCreateProduct")
     String getCreateProductView(ModelMap model) {
         return "adminCreateProduct";
@@ -98,24 +89,22 @@ public class AdminController {
         productService.saveProduct(newProduct);
 
         return "adminHome";
+    }
 
-<<<<<<< HEAD
-=======
     @GetMapping("admin-delete/{id}")
     public String deleteById(@PathVariable String id, Model model){
         productService.deleteById(Long.valueOf(id));
         List<Product> products = productService.getAllProducts();
         model.addAttribute("products", products);
         return "adminProduct";
->>>>>>> 3058b6df22039dbe225ef29325efcc1a432489f6
     }
-    
+
     @GetMapping("/admin-orderUpdate/{id}")
     public String updateOrder(@PathVariable String id, ModelMap modelMap){
         modelMap.addAttribute("current", orderService.getOrderById(Long.valueOf(id)));
         return "admin-orderUpdate";
     }
-    
+
     @PostMapping("/admin-orderUpdate")
     public String submitUpdate(@ModelAttribute("newOrder") Order newOrder) throws IOException {
         newOrder.setUserId(newOrder.getUserId());
@@ -128,28 +117,12 @@ public class AdminController {
 
         return "adminHome";
     }
-
-    @GetMapping("admin-delete/{id}")
-    public String deleteById(@PathVariable String id, Model model){
-    	long productId;
-		productId = Long.parseLong(id);
-    	productService.deleteById(productId);
-		List<Product> products = productService.getAllProducts();
-		model.addAttribute("products", products);
-		model.addAttribute("message", "Product was removed!");
-		return "adminProduct";
-    }
     
-    @GetMapping("delete-user/{id}")
-    public String deleteUserById(@PathVariable String id, Model model){
-    	long userId;
-		userId = Long.parseLong(id);
-    	userService.deleteUserById(userId);
-		List<User> users = userService.getAllUsers();
-		model.addAttribute("users", users);
-		model.addAttribute("message", "User was removed!");
-        return "adminCustomerManage";
-    }
+//    @GetMapping("delete-user/{id}")
+//    public String deleteUserById(@PathVariable String id){
+//        userService.deleteUserById(Long.valueOf(id));
+//        return "adminCustomerManage";
+//    }
 
     @PostMapping("/admin-save")
     public String saveProduct(@ModelAttribute("product") Product product) {
@@ -162,13 +135,6 @@ public class AdminController {
         List<Product> products = productService.getAllProducts();
         modelMap.addAttribute("products", products);
         return "adminProduct";
-    }
-    
-    @GetMapping("/adminOrders")
-    public String showOrders(ModelMap modelMap) {
-        List<Order> orders = orderService.getAllOrders();
-        modelMap.addAttribute("orders", orders);
-        return "adminOrders";
     }
 
     @PostMapping("/productFormDone")
@@ -236,12 +202,12 @@ public class AdminController {
 
         return "adminCustomerManage";
     }
-//
-//    @GetMapping("/admin-updateOrder/{id}")
-//    public String updateOrder(@PathVariable String id, Model model){
-//        model.addAttribute("order", orderService.findOrderById(Long.valueOf(id)));
-//        return "orderForm";
-//    }
+
+    @GetMapping("/admin-updateOrder/{id}")
+    public String updateOrder(@PathVariable String id, Model model){
+        model.addAttribute("order", orderService.findOrderById(Long.valueOf(id)));
+        return "orderForm";
+    }
 
     @PostMapping("/orderFormDone")
     public String updateOrder(@ModelAttribute("order") Order order, ModelMap modelMap) {

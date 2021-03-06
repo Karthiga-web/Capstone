@@ -122,20 +122,14 @@
                         <td>${order.quantity}</td>
                         <td>${order.price}</td>
                         <td>${order.status}</td>
-<<<<<<< HEAD
-                        <td><a type="button" class="btn btn-success"
-                         href="/admin-orderUpdate/${order.id}">Update</a></td>
-=======
                         <td style="text-align: center;"><a type="button" class="btn btn-success"
                                href="/admin-orderUpdate/${order.id}">Update</a></td>
->>>>>>> 3058b6df22039dbe225ef29325efcc1a432489f6
                     </tr>
                 </c:forEach>
             </table>
         </form>
     </div>
-    </div> 
-
+</div>
 
 <br>
 <br>
