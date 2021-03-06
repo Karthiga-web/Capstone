@@ -7,7 +7,7 @@
 <style>
  .receipt { 
  	background-color: lightgrey; 
-	width: 300px; 
+	width: max-content; 
  	border: 15px solid green; 
  	padding: 50px;
  	margin: 20px; 
@@ -21,7 +21,7 @@
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 		<div class="container-fluid">
 			<!-- brand header -->
-			<a class="navbar-brand" href="/">Musical.ly</a>
+			<a class="navbar-brand" href="/">Music.ly</a>
 			<button class="navbar-toggler" type="button"
 				data-bs-toggle="collapse" data-bs-target="#navbarNav"
 				aria-controls="navbarNav" aria-expanded="false"
@@ -48,7 +48,8 @@
 	</nav>
 	<h2  align="center">Order</h2>
 	<h5  align="center">Order Confirmation</h5>
-	<div class="receipt"  align="center">
+	<div align="center">
+			<div class="receipt"  align="center">
 		<form id="submitOrder" action="/submitOrder" method="post">
 			<h5>Receipt</h5>
 			<br>
@@ -77,6 +78,8 @@
 				type="submit" name="button" value="Cancel" />
 		</form>
 	</div>
+	</div >
+
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
 </body>
 </html>
