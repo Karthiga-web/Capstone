@@ -16,7 +16,7 @@
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 		<div class="container-fluid">
 			<!-- brand header -->
-			<a class="navbar-brand" href="/">Musical.ly</a>
+			<a class="navbar-brand" href="/">Music.ly</a>
 			<button class="navbar-toggler" type="button"
 				data-bs-toggle="collapse" data-bs-target="#navbarNav"
 				aria-controls="navbarNav" aria-expanded="false"
@@ -45,6 +45,10 @@
 	<div align="center">
 		${message }
 		<form id="register" action="/registerdone" method="post">
+			<h3>Register Customer</h3>
+			<h5>Please fill in your Information Below!</h5>
+			<br>
+			<h5>Basic Info</h5>
 			<table style="with: 50%">
 				<tr>
 					<td>Name</td>
@@ -66,6 +70,9 @@
 					<td>Phone</td>
 					<td><input type="text" name="phone" required /></td>
 				</tr>
+				</table>
+				<h5>Billing Information</h5>
+				<table style="with: 50%">
 				<tr>
 					<td>Address</td>
 					<td><input type="text" name="address" required /></td>

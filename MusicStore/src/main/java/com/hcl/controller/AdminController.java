@@ -37,8 +37,16 @@ public class AdminController {
     @Autowired
     OrderService orderService;
 
+<<<<<<< HEAD
     String role;
     
+=======
+    @GetMapping("/adminHome")
+    public String showAdminHomePage(ModelMap modelMap) {
+        return "adminHome";
+    }
+
+>>>>>>> 3058b6df22039dbe225ef29325efcc1a432489f6
     @GetMapping("/adminCreateProduct")
     String getCreateProductView(ModelMap model) {
         return "adminCreateProduct";
@@ -91,6 +99,15 @@ public class AdminController {
 
         return "adminHome";
 
+<<<<<<< HEAD
+=======
+    @GetMapping("admin-delete/{id}")
+    public String deleteById(@PathVariable String id, Model model){
+        productService.deleteById(Long.valueOf(id));
+        List<Product> products = productService.getAllProducts();
+        model.addAttribute("products", products);
+        return "adminProduct";
+>>>>>>> 3058b6df22039dbe225ef29325efcc1a432489f6
     }
     
     @GetMapping("/admin-orderUpdate/{id}")
@@ -238,6 +255,12 @@ public class AdminController {
         }
     }
 
+    @GetMapping("/adminOrders")
+    public String showAdminOrdersPage(ModelMap modelMap) {
+        List<Order> orders = orderService.getAllOrders();
+        modelMap.addAttribute("orders", orders);
+        return "adminOrders";
+    }
 
 
 

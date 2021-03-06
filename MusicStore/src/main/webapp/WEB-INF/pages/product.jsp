@@ -10,7 +10,7 @@
 	rel="stylesheet"
 	integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
 	crossorigin="anonymous">
-<title>View Tasks</title>
+<title>Product</title>
 <style>
 #ex_table {
 	table-layout: fixed !important;
@@ -51,13 +51,17 @@ tr:nth-child(even) {
 .left-align-footer {
 	text-align: right;
 }
+.margin-align{
+margin-right:5%;
+margin-left:5%;
+}
 </style>
 </head>
 <body>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 		<div class="container-fluid">
 			<!-- brand header -->
-			<a class="navbar-brand" href="/">Musical.ly</a>
+			<a class="navbar-brand" href="/">Music.ly</a>
 			<button class="navbar-toggler" type="button"
 				data-bs-toggle="collapse" data-bs-target="#navbarNav"
 				aria-controls="navbarNav" aria-expanded="false"
@@ -68,7 +72,7 @@ tr:nth-child(even) {
 				<ul class="navbar-nav">
 					<!-- Home tab -->
 					<li class="nav-item"><a class="nav-link active"
-						aria-current="page" href="/" name="target-top-home" >Home</a></li>
+						aria-current="page" href="/" name="target-top-home">Home</a></li>
 					<!-- Products -->
 					<li class="nav-item"><a class="nav-link " href="/product">Products</a>
 					</li>
@@ -83,7 +87,9 @@ tr:nth-child(even) {
 		</div>
 	</nav>
 	<!--Tables  -->
-	<div align="center">
+	<div class="margin-align" align="center" >
+		<h3>All Products</h3>
+		<h5>Checkout All the Awesome products available now!</h5>
 		<form id="search" action="/search" method="get">
 			<input type="text" name="search" placeholder="search"> <input
 				type="submit" name="button" value="search">
@@ -95,7 +101,7 @@ tr:nth-child(even) {
 					<th>Name</th>
 					<th>Category</th>
 					<th>Condition</th>
-					<th>Description</th>
+					<th>Price in $</th>
 					<th>Click to Update</th>
 				</tr>
 				<c:forEach var="product" items="${products}">
@@ -113,7 +119,7 @@ tr:nth-child(even) {
 		</form>
 	</div>
 	<!-- Footer -->
-	<footer class="row">
+	<footer class="row margin-align">
 		<div class="col">
 			@2016 Company.Inc <a href="#">Privacy </a> &#8226 <a href="#">Terms</a>
 		</div>

@@ -10,10 +10,17 @@
 	rel="stylesheet"
 	integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
 	crossorigin="anonymous">
-<title>View Details Of Product</title>
+<title>Product Details</title>
 <style>
 .left-align-footer {
 	text-align: right;
+}
+.detailDiv{
+    background-color: antiquewhite;
+}
+.borderbox{
+border: 1px solid black;
+margin: 0 35% 0 35%;
 }
 </style>
 </head>
@@ -21,7 +28,7 @@
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 		<div class="container-fluid">
 			<!-- brand header -->
-			<a class="navbar-brand" href="/">Musical.ly</a>
+			<a class="navbar-brand" href="/">Music.ly</a>
 			<button class="navbar-toggler" type="button"
 				data-bs-toggle="collapse" data-bs-target="#navbarNav"
 				aria-controls="navbarNav" aria-expanded="false"
@@ -39,7 +46,8 @@
 					<!-- Welcome User -->
 					<li class="nav-item"> <a class="nav-link">Welcome: ${ username}</a></li>
 					<!-- Logout -->
-					<li class="nav-item"><a class="nav-link" href="<c:url value="/logout"/>">Logout</a></li>
+					<li class="nav-item"><a class="nav-link"
+						href="<c:url value="/logout"/>">Logout</a></li>
 					<!-- Cart -->
 					<li class="nav-item"><a class="nav-link" href="/cart">Cart</a>
 					</li>
@@ -47,12 +55,10 @@
 			</div>
 		</div>
 	</nav>
-	<div align="center">
-		<h5>Product Detail</h5>
-		<br>
-		<p>Here is the detail information of the product!</p>
-		<br> 
-		<form id="order" action="/order" method="post">
+	<div class="detailDiv" align="center">
+		<h3>Product Detail</h3>
+		<h5>Here is the detail information of the product!</h5>
+		<form class="borderbox" id="order" action="/order" method="post">
 			<table style="with: 50%">
 				<tr>
 					<td>Name</td>
@@ -60,7 +66,8 @@
 				</tr>
 				<tr>
 					<td>Category</td>
-					<td><input type="text" name="category" readonly value=${ category}></td>
+					<td><input type="text" name="category" readonly
+						value=${ category}></td>
 					<td><input type="text"name="id" value=${ id} readonly hidden/></td>
 				</tr>
 				<tr>
@@ -69,7 +76,7 @@
 						value=${ condition}></td>
 				</tr>
 				<tr>
-					<td>Price</td>
+					<td>Price in $</td>
 					<td><input id="price" name="price" readonly value=${ price}></td>
 					<tr>
 					<td>Image</td>
@@ -79,8 +86,8 @@
 						readonly hidden /></td>
 				</tr>
 			</table>
-			<input type="submit" name="button" value="Back" />
-			<input type="submit" name="button" value="Order" id="orderOnclick" />
+			<input type="submit" name="button" value="Back" /> <input
+				type="submit" name="button" value="Order" id="orderOnclick" />
 		</form>
 	</div>
 

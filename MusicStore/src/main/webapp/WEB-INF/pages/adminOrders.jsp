@@ -7,7 +7,7 @@
 <head>
 
     <meta charset="ISO-8859-1">
-    <title>View Tasks</title>
+    <title>Orders</title>
 
     <link rel="stylesheet"
           href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -40,11 +40,34 @@
         td, th {
             border: 1px solid #dddddd;
             text-align: left;
-            vertical-align: bottom;
+            vertical-align: center;
             padding: 8px;
         }
         tr:nth-child(even) {
             background-color: #dddddd;
+        }
+
+        .container {
+            width:90%;
+            height:80%;
+            margin:0 auto;
+            padding:10% 0;
+            align-content:center;
+            text-align:center;
+        }
+
+        table {
+            margin:0 auto;
+        }
+
+        input {
+            padding:5px;
+            margin:8px auto;
+        }
+
+        button {
+            padding:5px 10px;
+            margin:8px;
         }
     </style>
 </head>
@@ -52,7 +75,7 @@
 
 <!-- create navigation bar ( header) -->
 <nav class="navbar navbar-inverse navbar-fixed-top" >
-    <div class="container">
+    <div class="nav-container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed"
                     data-toggle="collapse" data-target="#navbar" aria-expanded="false"
@@ -75,30 +98,20 @@
     </div>
 </nav>
 
-<br>
-<br>
-<br>
-<br>
-
-<div>
-    <h1>Order Management Page</h1>
-    <p>This is where the admin can view current orders!</p>
-</div>
-
-<br>
-
-<div align="center">
+<div class="container" align="center">
     <div class="panel-body">
-        <form id="product" action="/adminOrders" method="post">
+        <h1>Order Management</h1>
+        <form id="product" action="/orderFormDone" method="post">
             <table>
                 <tr>
                     <th>User ID</th>
                     <th>Product ID</th>
                     <th>Product Name</th>
-                    <th>Unit Price</th>
+                    <th>Unit Price in $</th>
                     <th>Quantity</th>
-                    <th>Price</th>
+                    <th>Price in $</th>
                     <th>Status</th>
+                    <th style="text-align: center;">Update</th>
                 </tr>
                 <c:forEach var="order" items="${orders}">
                     <tr>
@@ -109,8 +122,13 @@
                         <td>${order.quantity}</td>
                         <td>${order.price}</td>
                         <td>${order.status}</td>
+<<<<<<< HEAD
                         <td><a type="button" class="btn btn-success"
                          href="/admin-orderUpdate/${order.id}">Update</a></td>
+=======
+                        <td style="text-align: center;"><a type="button" class="btn btn-success"
+                               href="/admin-orderUpdate/${order.id}">Update</a></td>
+>>>>>>> 3058b6df22039dbe225ef29325efcc1a432489f6
                     </tr>
                 </c:forEach>
             </table>

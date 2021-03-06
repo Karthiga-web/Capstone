@@ -6,7 +6,7 @@
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
     <meta charset="ISO-8859-1">
-    <title>View Tasks</title>
+    <title>Product Inventory</title>
 
     <link rel="stylesheet"
           href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -50,12 +50,31 @@
     td, th {
         border: 1px solid #dddddd;
         text-align: left;
-        vertical-align: bottom;
+        vertical-align: center;
         padding: 8px;
     }
 
     tr:nth-child(even) {
         background-color: #dddddd;
+    }
+
+    .container {
+        width:80%;
+        height:80%;
+        margin:0 auto;
+        padding:8%;
+        align-content:center;
+        text-align:center;
+    }
+
+    input {
+        padding:5px;
+        margin:8px auto;
+    }
+
+    button {
+        padding:5px 10px;
+        margin:8px;
     }
 </style>
 </head>
@@ -63,7 +82,7 @@
 
 <!-- create navigation bar ( header) -->
 <nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
+    <div class="nav-container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed"
                     data-toggle="collapse" data-target="#navbar" aria-expanded="false"
@@ -86,6 +105,7 @@
     </div>
 </nav>
 
+<<<<<<< HEAD
 <br>
 <br>
 <br>
@@ -94,23 +114,26 @@
 
 <br>
 <br>
+=======
+>>>>>>> 3058b6df22039dbe225ef29325efcc1a432489f6
 
-<div align="center">
+<div class="container" align="center">
     <div class="panel-body">
+        <h1>Edit Product Details</h1>
         <form id="newProduct" action="/admin-update" method="post" enctype="multipart/form-data">
-            <input type="hidden" name="id" value="${current.id}" readonly />        <!--Hidden ID -->
+            <input type="hidden" name="id" value="${current.id}" readonly />  <br>      <!--Hidden ID -->
             <label>Product Name</label>
-            <input type="text" name="name" value="${current.name}"/>                <!--Product Name-->
+            <input type="text" name="name" value="${current.name}"/>        <br>        <!--Product Name-->
             <label>Category</label>
-            <input type="text" name="category" value="${current.category}" />       <!--Product Category-->
+            <input type="text" name="category" value="${current.category}" />   <br>    <!--Product Category-->
             <label>Condition</label>
-            <input type="text" name="condition" value="${current.condition}" />     <!--Product Condition-->
-            <label>Price</label>
-            <input type="text" name="price" value="${current.price}" />             <!--Product Price-->
-            <img src="data:image/jpg;base64,${current.base64image}" width="100" height="100" />
-            <input type="file" accept="image/jpg" name="image345"/>                 <!--Product Image-->
+            <input type="text" name="condition" value="${current.condition}" />   <br>  <!--Product Condition-->
+            <label>Price in $</label>
+            <input type="text" name="price" value="${current.price}" />  <br>           <!--Product Price-->
+            <img src="data:image/jpg;base64,${current.base64image}" width="100" height="100" /><br>
+            <input type="file" accept="image/jpg" name="image345"/>    <br>             <!--Product Image-->
 
-            <input type="submit" value="submit">
+            <input type="submit" value="submit" class="btn btn-primary">
         </form>
     </div>
 

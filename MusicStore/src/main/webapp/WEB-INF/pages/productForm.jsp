@@ -5,7 +5,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="ISO-8859-1">
-    <title>Registration</title>
+    <title>Product</title>
     <link rel="stylesheet"
           href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
@@ -57,7 +57,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label" for="price"> Price </label> <input
+                    <label class="control-label" for="price"> Price in $</label> <input
                         id="price" class="form-control" field="*{price}" required
                         autofocus="autofocus"/>
                 </div>
