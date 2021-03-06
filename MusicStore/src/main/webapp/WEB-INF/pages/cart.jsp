@@ -47,13 +47,17 @@ td, th {
 tr:nth-child(even) {
 	background-color: #dddddd;
 }
+.margin-align{
+margin-right:5%;
+margin-left:5%;
+}
 </style>
 </head>
 <body>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 		<div class="container-fluid">
 			<!-- brand header -->
-			<a class="navbar-brand" href="/">Musical.ly</a>
+			<a class="navbar-brand" href="/">Music.ly</a>
 			<button class="navbar-toggler" type="button"
 				data-bs-toggle="collapse" data-bs-target="#navbarNav"
 				aria-controls="navbarNav" aria-expanded="false"
@@ -77,7 +81,7 @@ tr:nth-child(even) {
 			</div>
 		</div>
 	</nav>
-	<div align="center">
+	<div class="margin-align" align="center">
 		<h3>Cart</h3>
 		<h5>All the selected products in your Shopping Cart</h5>
 		${message }
